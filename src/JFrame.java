@@ -43,11 +43,12 @@ public class JFrame extends javax.swing.JFrame {
         PanelCards = new javax.swing.JPanel();
         RosterCard = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        playerIdField = new javax.swing.JTextField();
+        RosterPlayerIdField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
         statsButton = new javax.swing.JButton();
-        textArea1 = new java.awt.TextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         SearchCard = new javax.swing.JPanel();
         searchButton = new javax.swing.JButton();
         nameField = new javax.swing.JTextField();
@@ -84,10 +85,25 @@ public class JFrame extends javax.swing.JFrame {
         minBlocksField = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        textArea2 = new java.awt.TextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
         ScheduleCard = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
+        mapButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         MoreCard = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        clearedToPlayButton = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jLabel25 = new javax.swing.JLabel();
+        extendedButton = new javax.swing.JButton();
+        expiringButton = new javax.swing.JButton();
+        injuredButton = new javax.swing.JButton();
+        morePlayerIdField = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,9 +197,9 @@ public class JFrame extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(200, 200, 200));
         jLabel7.setText("Player ID:");
 
-        playerIdField.addActionListener(new java.awt.event.ActionListener() {
+        RosterPlayerIdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playerIdFieldActionPerformed(evt);
+                RosterPlayerIdFieldActionPerformed(evt);
             }
         });
 
@@ -206,19 +222,21 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
         javax.swing.GroupLayout RosterCardLayout = new javax.swing.GroupLayout(RosterCard);
         RosterCard.setLayout(RosterCardLayout);
         RosterCardLayout.setHorizontalGroup(
             RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RosterCardLayout.createSequentialGroup()
+            .addGroup(RosterCardLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, RosterCardLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, RosterCardLayout.createSequentialGroup()
-                        .addComponent(playerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jLabel7)
+                    .addGroup(RosterCardLayout.createSequentialGroup()
+                        .addComponent(RosterPlayerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -234,13 +252,13 @@ public class JFrame extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(playerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RosterPlayerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statsButton)
                     .addComponent(removeButton)
                     .addComponent(addButton))
-                .addGap(42, 42, 42)
-                .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         PanelCards.add(RosterCard, "RosterCard");
@@ -378,93 +396,98 @@ public class JFrame extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(200, 200, 200));
         jLabel23.setText("≥");
 
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane3.setViewportView(jTextArea3);
+
         javax.swing.GroupLayout SearchCardLayout = new javax.swing.GroupLayout(SearchCard);
         SearchCard.setLayout(SearchCardLayout);
         SearchCardLayout.setHorizontalGroup(
             SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SearchCardLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textArea2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(SearchCardLayout.createSequentialGroup()
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(SearchCardLayout.createSequentialGroup()
-                                .addComponent(minAgeField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(maxAgeField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(21, 21, 21)
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(SearchCardLayout.createSequentialGroup()
-                                .addComponent(minHeightField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(maxHeightField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(21, 21, 21)
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(SearchCardLayout.createSequentialGroup()
-                                .addComponent(minWeightField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(maxWeightField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(21, 21, 21)
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(positionOptionBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(SearchCardLayout.createSequentialGroup()
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(110, 110, 110)
-                        .addComponent(searchButton))
-                    .addGroup(SearchCardLayout.createSequentialGroup()
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(SearchCardLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(maxSalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(20, 20, 20)
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(SearchCardLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minPointsField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(20, 20, 20)
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(SearchCardLayout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minReboundsField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(20, 20, 20)
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(SearchCardLayout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minAssistsField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(20, 20, 20)
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(SearchCardLayout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minStealsField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(20, 20, 20)
-                        .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(SearchCardLayout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minBlocksField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(SearchCardLayout.createSequentialGroup()
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addGroup(SearchCardLayout.createSequentialGroup()
+                                    .addComponent(minAgeField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(maxAgeField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(21, 21, 21)
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(SearchCardLayout.createSequentialGroup()
+                                    .addComponent(minHeightField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(maxHeightField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(21, 21, 21)
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(SearchCardLayout.createSequentialGroup()
+                                    .addComponent(minWeightField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(maxWeightField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(21, 21, 21)
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(positionOptionBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(SearchCardLayout.createSequentialGroup()
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(110, 110, 110)
+                            .addComponent(searchButton))
+                        .addGroup(SearchCardLayout.createSequentialGroup()
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(SearchCardLayout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(maxSalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(20, 20, 20)
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(SearchCardLayout.createSequentialGroup()
+                                    .addComponent(jLabel14)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(minPointsField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(20, 20, 20)
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(SearchCardLayout.createSequentialGroup()
+                                    .addComponent(jLabel16)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(minReboundsField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(20, 20, 20)
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(SearchCardLayout.createSequentialGroup()
+                                    .addComponent(jLabel18)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(minAssistsField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(20, 20, 20)
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(SearchCardLayout.createSequentialGroup()
+                                    .addComponent(jLabel21)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(minStealsField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(20, 20, 20)
+                            .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(SearchCardLayout.createSequentialGroup()
+                                    .addComponent(jLabel23)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(minBlocksField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(60, 60, 60))
         );
         SearchCardLayout.setVerticalGroup(
@@ -543,56 +566,162 @@ public class JFrame extends javax.swing.JFrame {
                         .addGroup(SearchCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23)
                             .addComponent(minBlocksField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(38, 38, 38)
-                .addComponent(textArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         PanelCards.add(SearchCard, "SearchCard");
 
         ScheduleCard.setBackground(new java.awt.Color(102, 0, 102));
 
-        jButton5.setBackground(new java.awt.Color(187, 187, 187));
-        jButton5.setFont(new java.awt.Font("Krungthep", 0, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(78, 80, 82));
-        jButton5.setText("See Map");
-        jButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        mapButton.setBackground(new java.awt.Color(187, 187, 187));
+        mapButton.setFont(new java.awt.Font("Krungthep", 0, 18)); // NOI18N
+        mapButton.setForeground(new java.awt.Color(78, 80, 82));
+        mapButton.setText("See Map");
+        mapButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mapButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                mapButtonActionPerformed(evt);
             }
         });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout ScheduleCardLayout = new javax.swing.GroupLayout(ScheduleCard);
         ScheduleCard.setLayout(ScheduleCardLayout);
         ScheduleCardLayout.setHorizontalGroup(
             ScheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ScheduleCardLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addGroup(ScheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         ScheduleCardLayout.setVerticalGroup(
             ScheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ScheduleCardLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jButton5)
-                .addContainerGap(617, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(mapButton)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         PanelCards.add(ScheduleCard, "ScheduleCard");
 
         MoreCard.setBackground(new java.awt.Color(102, 51, 0));
 
+        jLabel24.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(200, 200, 200));
+        jLabel24.setText("Injury Reserve Management");
+
+        clearedToPlayButton.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
+        clearedToPlayButton.setText("Cleared to Play");
+        clearedToPlayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearedToPlayButtonActionPerformed(evt);
+            }
+        });
+
+        jTextArea4.setColumns(20);
+        jTextArea4.setRows(5);
+        jScrollPane4.setViewportView(jTextArea4);
+
+        jTextArea5.setColumns(20);
+        jTextArea5.setRows(5);
+        jScrollPane5.setViewportView(jTextArea5);
+
+        jLabel25.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(200, 200, 200));
+        jLabel25.setText("Contract Extension Queue");
+
+        extendedButton.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
+        extendedButton.setText("Extended");
+
+        expiringButton.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
+        expiringButton.setText("Expiring Contract");
+        expiringButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                expiringButtonActionPerformed(evt);
+            }
+        });
+
+        injuredButton.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
+        injuredButton.setText("Injured");
+        injuredButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                injuredButtonActionPerformed(evt);
+            }
+        });
+
+        morePlayerIdField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                morePlayerIdFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel26.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(200, 200, 200));
+        jLabel26.setText("Player ID:");
+
         javax.swing.GroupLayout MoreCardLayout = new javax.swing.GroupLayout(MoreCard);
         MoreCard.setLayout(MoreCardLayout);
         MoreCardLayout.setHorizontalGroup(
             MoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 605, Short.MAX_VALUE)
+            .addGroup(MoreCardLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(MoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MoreCardLayout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(MoreCardLayout.createSequentialGroup()
+                        .addGroup(MoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4)
+                            .addGroup(MoreCardLayout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(clearedToPlayButton))
+                            .addComponent(jScrollPane5)
+                            .addGroup(MoreCardLayout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(extendedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MoreCardLayout.createSequentialGroup()
+                                .addComponent(morePlayerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(injuredButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(expiringButton)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(60, 60, 60))))
         );
         MoreCardLayout.setVerticalGroup(
             MoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 681, Short.MAX_VALUE)
+            .addGroup(MoreCardLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(MoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(morePlayerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(expiringButton)
+                    .addComponent(injuredButton))
+                .addGap(18, 18, 18)
+                .addGroup(MoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(clearedToPlayButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(MoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(extendedButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         PanelCards.add(MoreCard, "MoreCard");
@@ -631,12 +760,12 @@ public class JFrame extends javax.swing.JFrame {
         cardLayout.show(PanelCards, "MoreCard");
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void mapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapButtonActionPerformed
         new MapWindow().setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_mapButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
+        //Should get all the values from text field and input into sql as query
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void positionOptionBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionOptionBoxActionPerformed
@@ -647,9 +776,9 @@ public class JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_positionOptionBoxItemStateChanged
 
-    private void playerIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerIdFieldActionPerformed
+    private void RosterPlayerIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RosterPlayerIdFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_playerIdFieldActionPerformed
+    }//GEN-LAST:event_RosterPlayerIdFieldActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         // TODO add your handling code here:
@@ -658,6 +787,22 @@ public class JFrame extends javax.swing.JFrame {
     private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_statsButtonActionPerformed
+
+    private void clearedToPlayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearedToPlayButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clearedToPlayButtonActionPerformed
+
+    private void expiringButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expiringButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_expiringButtonActionPerformed
+
+    private void injuredButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_injuredButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_injuredButtonActionPerformed
+
+    private void morePlayerIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_morePlayerIdFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_morePlayerIdFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -698,14 +843,18 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JPanel MoreCard;
     private javax.swing.JPanel PanelCards;
     private javax.swing.JPanel RosterCard;
+    private javax.swing.JTextField RosterPlayerIdField;
     private javax.swing.JPanel ScheduleCard;
     private javax.swing.JPanel SearchCard;
     private javax.swing.JButton addButton;
+    private javax.swing.JButton clearedToPlayButton;
+    private javax.swing.JButton expiringButton;
+    private javax.swing.JButton extendedButton;
+    private javax.swing.JButton injuredButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -722,6 +871,9 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -731,7 +883,18 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JButton mapButton;
     private javax.swing.JTextField maxAgeField;
     private javax.swing.JTextField maxHeightField;
     private javax.swing.JTextField maxSalaryField;
@@ -744,13 +907,11 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField minReboundsField;
     private javax.swing.JTextField minStealsField;
     private javax.swing.JTextField minWeightField;
+    private javax.swing.JTextField morePlayerIdField;
     private javax.swing.JTextField nameField;
-    private javax.swing.JTextField playerIdField;
     private javax.swing.JComboBox<String> positionOptionBox;
     private javax.swing.JButton removeButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JButton statsButton;
-    private java.awt.TextArea textArea1;
-    private java.awt.TextArea textArea2;
     // End of variables declaration//GEN-END:variables
 }
