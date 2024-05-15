@@ -32,6 +32,7 @@ public class TeamManager {
                        + "height VARCHAR(255), "
                        + "weight VARCHAR(255), "
                        + "position VARCHAR(255), "
+                       + "salary VARCHAR(255), "
                        + "points VARCHAR(255), "
                        + "rebounds VARCHAR(255), "
                        + "assists VARCHAR(255), "
@@ -80,7 +81,7 @@ public class TeamManager {
     }
 
     private String addPlayerToTeamDB(Player player) {
-        String sql = "INSERT INTO team (name, age, height, weight, position, points, rebounds, assists, steals, blocks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO team (name, age, height, weight, position, salary, points, rebounds, assists, steals, blocks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(teamdb);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, player.getName());
@@ -88,11 +89,12 @@ public class TeamManager {
             pstmt.setString(3, player.getHeight());
             pstmt.setString(4, player.getWeight());
             pstmt.setString(5, player.getPosition());
-            pstmt.setString(6, player.getPoints());
-            pstmt.setString(7, player.getRebounds());
-            pstmt.setString(8, player.getAssists());
-            pstmt.setString(9, player.getSteals());
-            pstmt.setString(10, player.getBlocks());
+            pstmt.setString(6, player.getSalary());
+            pstmt.setString(7, player.getPoints());
+            pstmt.setString(8, player.getRebounds());
+            pstmt.setString(9, player.getAssists());
+            pstmt.setString(10, player.getSteals());
+            pstmt.setString(11, player.getBlocks());
             pstmt.executeUpdate();
             return "Player added successfully.";
         } catch (SQLException e) {
