@@ -121,5 +121,59 @@ public class TeamManager {
             return "Error removing player.";
         }
     }
+    
+    private String checkTeam(Player player){
+        StringBuilder result = new StringBuilder();
+        int playerCount = 0;
+        int F = 0, G = 0, C = 0;
+        double totalSalary = 0;
+
+        try (Connection conn = DriverManager.getConnection(teamdb);
+         PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM team");
+         ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                player = new Player(
+                         rs.getString("name"),
+                         rs.getString("age"),
+                         rs.getString("height"),
+                         rs.getString("weight"),
+                         rs.getString("position"),
+                         rs.getString("points"),
+                         rs.getString("rebounds"),
+                         rs.getString("assists"),
+                         rs.getString("steals"),
+                         rs.getString("blocks")
+                );
+                playerCount++;
+                totalSalary += Double.parseDouble(player.getSalary());
+                if (player.getPosition().equals("Forwards"))
+                    F++;
+		else if (player.getPosition().equals("Guards"))
+                    G++;
+		else
+                    C++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Error checking team eligibility.";
+        }
+        if (F >= 2 && G >= 2 && C >= 2 && totalSalary <= 20000 && playerCount >= 10 && playerCount <= 15) {
+            return "Team formed follows NBA rules. You may proceed.";
+        } else {
+            // Determine specific invalid condition
+            String invalid = "Team formed does not follow NBA rules.";
+            if (playerCount < 10 || playerCount > 15) 
+                invalid += "\nNumber of players must be between 10 to 15 players.";
+            if (totalSalary > 20000) 
+                invalid += "\nCumulative salary for all players exceeds 20000.";
+            if (F < 2) 
+                invalid += "\nAt least 2 forwards (F) are required.";
+            if (G < 2) 
+                invalid += "\nAt least 2 guards (G) are required.";
+            if (C < 2) 
+                invalid += "\nAt least 2 centers (C) are required.";
+            return invalid;
+        }
+    }
 }
 
