@@ -12,17 +12,17 @@ package nba;
 public class Player {
     private String name;
     private String age;
-    private String height;
-    private String weight;
+    private double height;
+    private double weight;
     private String position;
     private String salary;
-    private String points;
-    private String rebounds;
-    private String assists;
-    private String steals;
-    private String blocks;
+    private double points;
+    private double rebounds;
+    private double assists;
+    private double steals;
+    private double blocks;
 
-    public Player(String name, String age, String height, String weight, String position, String points, String rebounds, String assists, String steals, String blocks) {
+    public Player(String name, String age, double height, double weight, String position, double points, double rebounds, double assists, double steals, double blocks) {
         this.name = name;
         this.age = age;
         this.height = height;
@@ -43,11 +43,11 @@ public class Player {
         return age;
     }
 
-    public String getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public String getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -61,36 +61,35 @@ public class Player {
     }
 
     public String getSalary() {
-        double pnt = Double.parseDouble(points);
-        if (pnt == 37.5)
-            return Double.toString(5000);
-        else if (pnt >= 28.8 && pnt < 37.5)
-            return Double.toString(4000);
-        else if (pnt >= 20.0 && pnt < 28.8)
-            return Double.toString(3000);
-        else if (pnt >= 11.6 && pnt < 20)
-            return Double.toString(2000);
+        if (points == 37.5)
+            return "5000";
+        else if (points >= 28.8 && points < 37.5)
+            return "4000";
+        else if (points >= 20.0 && points < 28.8)
+            return "3000";
+        else if (points >= 11.6 && points < 20)
+            return "2000";
         else
-            return Double.toString(1000);
+            return "1000";
     }
     
-    public String getPoints() {
+    public double getPoints() {
         return points;
     }
 
-    public String getRebounds() {
+    public double getRebounds() {
         return rebounds;
     }
 
-    public String getAssists() {
+    public double getAssists() {
         return assists;
     }
 
-    public String getSteals() {
+    public double getSteals() {
         return steals;
     }
 
-    public String getBlocks() {
+    public double getBlocks() {
         return blocks;
     }
 }

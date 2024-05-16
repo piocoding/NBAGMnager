@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TeamManager {
-    private static final String teamdb = "jdbc:derby:teamDB;create=true";
+    private static final String teamdb = "jdbc:derby:teamDB;create=true"; // teamdb URL
 
     public TeamManager() {
         createTeamTable();
@@ -86,15 +86,15 @@ public class TeamManager {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, player.getName());
             pstmt.setString(2, player.getAge());
-            pstmt.setString(3, player.getHeight());
-            pstmt.setString(4, player.getWeight());
+            pstmt.setDouble(3, player.getHeight());
+            pstmt.setDouble(4, player.getWeight());
             pstmt.setString(5, player.getPosition());
             pstmt.setString(6, player.getSalary());
-            pstmt.setString(7, player.getPoints());
-            pstmt.setString(8, player.getRebounds());
-            pstmt.setString(9, player.getAssists());
-            pstmt.setString(10, player.getSteals());
-            pstmt.setString(11, player.getBlocks());
+            pstmt.setDouble(7, player.getPoints());
+            pstmt.setDouble(8, player.getRebounds());
+            pstmt.setDouble(9, player.getAssists());
+            pstmt.setDouble(10, player.getSteals());
+            pstmt.setDouble(11, player.getBlocks());
             pstmt.executeUpdate();
             return "Player added successfully.";
         } catch (SQLException e) {
@@ -137,14 +137,14 @@ public class TeamManager {
                 player = new Player(
                          rs.getString("name"),
                          rs.getString("age"),
-                         rs.getString("height"),
-                         rs.getString("weight"),
+                         rs.getDouble("height"),
+                         rs.getDouble("weight"),
                          rs.getString("position"),
-                         rs.getString("points"),
-                         rs.getString("rebounds"),
-                         rs.getString("assists"),
-                         rs.getString("steals"),
-                         rs.getString("blocks")
+                         rs.getDouble("points"),
+                         rs.getDouble("rebounds"),
+                         rs.getDouble("assists"),
+                         rs.getDouble("steals"),
+                         rs.getDouble("blocks")
                 );
                 playerCount++;
                 totalSalary += Double.parseDouble(player.getSalary());

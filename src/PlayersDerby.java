@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class PlayersDerby {
-    private static final String playerdb = "jdbc:derby:MyDatabase"; // Your Derby database URL
+    private static final String playerdb = "jdbc:derby:MyDatabase"; // playerdb URL
 
     public static void main(String[] args) {
         try (Connection connection = DriverManager.getConnection(playerdb)) {
@@ -51,14 +51,14 @@ public class PlayersDerby {
     private static Player createPlayerFromResultSet(ResultSet rs) throws SQLException {
         String name = rs.getString("name");
         String age = rs.getString("age");
-        String height = rs.getString("height");
-        String weight = rs.getString("weight");
+        double height = rs.getDouble("height");
+        double weight = rs.getDouble("weight");
         String position = rs.getString("position");
-        String points = rs.getString("points");
-        String rebounds = rs.getString("rebounds");
-        String assists = rs.getString("assists");
-        String steals = rs.getString("steals");
-        String blocks = rs.getString("blocks");
+        double points = rs.getDouble("points");
+        double rebounds = rs.getDouble("rebounds");
+        double assists = rs.getDouble("assists");
+        double steals = rs.getDouble("steals");
+        double blocks = rs.getDouble("blocks");
 
         return new Player(name, age, height, weight, position, points, rebounds, assists, steals, blocks);
     }
