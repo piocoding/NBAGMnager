@@ -15,6 +15,7 @@ public class JFrame extends javax.swing.JFrame {
     /**
      * Creates new form JFrame
      */
+    TeamManager team = new TeamManager();
     CardLayout cardLayout;
     public JFrame() {
         initComponents();
@@ -43,7 +44,7 @@ public class JFrame extends javax.swing.JFrame {
         PanelCards = new javax.swing.JPanel();
         RosterCard = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        RosterPlayerIdField = new javax.swing.JTextField();
+        RosterPlayerNameField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
         statsButton = new javax.swing.JButton();
@@ -196,16 +197,21 @@ public class JFrame extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(200, 200, 200));
-        jLabel7.setText("Player ID:");
+        jLabel7.setText("Player Name:");
 
-        RosterPlayerIdField.addActionListener(new java.awt.event.ActionListener() {
+        RosterPlayerNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RosterPlayerIdFieldActionPerformed(evt);
+                RosterPlayerNameFieldActionPerformed(evt);
             }
         });
 
         addButton.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
         addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         removeButton.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
         removeButton.setText("Remove");
@@ -237,7 +243,7 @@ public class JFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane2)
                     .addComponent(jLabel7)
                     .addGroup(RosterCardLayout.createSequentialGroup()
-                        .addComponent(RosterPlayerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RosterPlayerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,7 +259,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RosterPlayerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RosterPlayerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statsButton)
                     .addComponent(removeButton)
                     .addComponent(addButton))
@@ -777,16 +783,16 @@ public class JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_positionOptionBoxItemStateChanged
 
-    private void RosterPlayerIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RosterPlayerIdFieldActionPerformed
+    private void RosterPlayerNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RosterPlayerNameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RosterPlayerIdFieldActionPerformed
+    }//GEN-LAST:event_RosterPlayerNameFieldActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        // TODO add your handling code here:
+        team.removePlayer(RosterPlayerNameField.getText());
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_statsButtonActionPerformed
 
     private void clearedToPlayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearedToPlayButtonActionPerformed
@@ -804,6 +810,10 @@ public class JFrame extends javax.swing.JFrame {
     private void morePlayerIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_morePlayerIdFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_morePlayerIdFieldActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        team.addPlayerFromSourceDB(RosterPlayerNameField.getText());
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -844,7 +854,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JPanel MoreCard;
     private javax.swing.JPanel PanelCards;
     private javax.swing.JPanel RosterCard;
-    private javax.swing.JTextField RosterPlayerIdField;
+    private javax.swing.JTextField RosterPlayerNameField;
     private javax.swing.JPanel ScheduleCard;
     private javax.swing.JPanel SearchCard;
     private javax.swing.JButton addButton;

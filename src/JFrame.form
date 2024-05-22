@@ -213,7 +213,7 @@
                               <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="RosterPlayerIdField" min="-2" pref="225" max="-2" attributes="0"/>
+                                  <Component id="RosterPlayerNameField" min="-2" pref="225" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                   <Component id="addButton" min="-2" pref="54" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -233,7 +233,7 @@
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="RosterPlayerIdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="RosterPlayerNameField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="statsButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="removeButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -254,12 +254,12 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c8" green="c8" red="c8" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Player ID:"/>
+                    <Property name="text" type="java.lang.String" value="Player Name:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="RosterPlayerIdField">
+                <Component class="javax.swing.JTextField" name="RosterPlayerNameField">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RosterPlayerIdFieldActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RosterPlayerNameFieldActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="addButton">
@@ -269,6 +269,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Add"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="removeButton">
                   <Properties>
