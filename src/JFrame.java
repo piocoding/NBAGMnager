@@ -792,7 +792,7 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
-        
+        new StatsWindow(RosterPlayerNameField.getText());
     }//GEN-LAST:event_statsButtonActionPerformed
 
     private void clearedToPlayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearedToPlayButtonActionPerformed
