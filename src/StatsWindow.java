@@ -1,3 +1,8 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +13,20 @@
  * @author sofiashahrir
  */
 public class StatsWindow extends javax.swing.JFrame {
-
+    private static final String playerdb = "jdbc:derby:MyDatabase";
     /**
      * Creates new form StatsWindow
      */
     public StatsWindow() {
         initComponents();
+        try (Connection connection = DriverManager.getConnection(playerdb)){
+            
+            Player player = PlayersDerby.getPlayerByName(connection, "");
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
     }
 
     /**
