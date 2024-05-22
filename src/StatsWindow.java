@@ -22,7 +22,15 @@ public class StatsWindow extends javax.swing.JFrame {
         try (Connection connection = DriverManager.getConnection(playerdb)){
             
             Player player = PlayersDerby.getPlayerByName(connection, playerName);
-            
+            nameArea.setText(player.getName());
+            ageArea.setText(player.getAge());
+            positionArea.setText(player.getPosition());
+            salaryArea.setText(player.getSalary());
+            pointsArea.setText(String.valueOf(player.getPoints()));
+            reboundsArea.setText(String.valueOf(player.getRebounds()));
+            assistsArea.setText(String.valueOf(player.getAssists()));
+            stealsArea.setText(String.valueOf(player.getSteals()));
+            blocksArea.setText(String.valueOf(player.getBlocks()));
             
         } catch (SQLException ex) {
             ex.printStackTrace();
