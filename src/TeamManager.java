@@ -15,15 +15,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TeamManager {
-    private static final String teamdb = "jdbc:derby:teamDB;create=true"; // teamdb URL
-
+    private static final String teamdb = "jdbc:derby://localhost:1527/teamDB;create=true"; // teamdb URL
+    private static Connection conn = null;
     public TeamManager() {
         createTeamTable();
     }
 
     private void createTeamTable() {
-        try (Connection conn = DriverManager.getConnection(teamdb);
-             Statement stmt = conn.createStatement()) {
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            conn = DriverManager.getConnection(teamdb);
+            Statement stmt = conn.createStatement();
             String sql = "CREATE TABLE team ("
                        + "name VARCHAR(255), "
                        + "age VARCHAR(255), "
@@ -41,6 +43,9 @@ public class TeamManager {
             if (!"X0Y32".equals(e.getSQLState())) { // Table already exists
                 e.printStackTrace();
             }
+        } catch(ClassNotFoundException e){
+            System.out.println("Connection unsuccessful.");
+            e.printStackTrace();
         }
     }
 
