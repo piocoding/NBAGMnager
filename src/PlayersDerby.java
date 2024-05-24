@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class PlayersDerby {
-    private static final String playerdb = "jdbc:derby:MyDatabase"; // playerdb URL
+    private static final String playerdb = "jdbc:derby:statsdb;create=true"; // playerdb URL
 
     public static void main(String[] args) {
         try (Connection connection = DriverManager.getConnection(playerdb)) {
