@@ -23,7 +23,7 @@ public class TeamManager {
 
     private void createTeamTable() {
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             conn = DriverManager.getConnection(teamdb);
             Statement stmt = conn.createStatement();
             String sql = "CREATE TABLE team ("
