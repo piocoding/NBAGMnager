@@ -23,6 +23,10 @@ public class PlayerStats {
     private static final String statsUrl = "jdbc:derby:statsdb;create=true";
     private static Connection connection = null;
     
+    public static void main (String[] args){
+        statsdatabase();
+    }
+    
     public static void statsdatabase(){
         try{
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
