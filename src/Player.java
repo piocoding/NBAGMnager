@@ -12,8 +12,6 @@
 public class Player {
     private String name;
     private String age;
-    private double height;
-    private double weight;
     private String position;
     private String salary;
     private double points;
@@ -22,11 +20,9 @@ public class Player {
     private double steals;
     private double blocks;
 
-    public Player(String name, String age, double height, double weight, String position, double points, double rebounds, double assists, double steals, double blocks) {
+    public Player(String name, String age, String position, double points, double rebounds, double assists, double steals, double blocks) {
         this.name = name;
         this.age = age;
-        this.height = height;
-        this.weight = weight;
         this.position = position;
         this.points = points;
         this.rebounds = rebounds;
@@ -43,21 +39,13 @@ public class Player {
         return age;
     }
 
-    public double getHeight() {
-        return height;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
     public String getPosition() {
         if (position == "G")
             return "Guards";
         else if (position == "F")
             return "Forwards";
         else
-            return "Centres";
+            return "Centers";
     }
 
     public String getSalary() {
