@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -22,6 +23,9 @@ public class StatsWindow extends javax.swing.JFrame {
         try (Connection connection = DriverManager.getConnection(playerdb)){
             
             Player player = PlayersDerby.getPlayerByName(connection, playerName);
+            if (player == null) {
+                JOptionPane.showMessageDialog(null, "No player exists with this name.", "Error", JOptionPane.WARNING_MESSAGE);
+            }
             nameArea.setText(player.getName());
             ageArea.setText(player.getAge());
             positionArea.setText(player.getPosition());
