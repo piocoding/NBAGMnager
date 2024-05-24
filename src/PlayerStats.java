@@ -93,8 +93,9 @@ public class PlayerStats {
         
         }catch(IOException | NumberFormatException | SQLException e){
             e.printStackTrace();
+            System.out.println("error");
         }
     }
     
-    
+  
 }
