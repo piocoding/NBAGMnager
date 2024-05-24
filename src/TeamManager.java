@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TeamManager {
-    private static final String teamdb = "jdbc:derby://localhost:1527/teamDB;create=true"; // teamdb URL
+    private static final String teamdb = "jdbc:derby:teamDB;create=true"; // teamdb URL
     private static Connection conn = null;
     public TeamManager() {
         createTeamTable();
@@ -175,6 +175,9 @@ public class TeamManager {
                 invalid += "\nAt least 2 centers (C) are required.";
             return invalid;
         }
+    }
+    public static void main(String[] args){
+        TeamManager tm = new TeamManager();
     }
 }
 
