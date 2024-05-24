@@ -89,8 +89,6 @@ public class TeamManager {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, player.getName());
             pstmt.setString(2, player.getAge());
-            pstmt.setDouble(3, player.getHeight());
-            pstmt.setDouble(4, player.getWeight());
             pstmt.setString(5, player.getPosition());
             pstmt.setString(6, player.getSalary());
             pstmt.setDouble(7, player.getPoints());
@@ -140,8 +138,6 @@ public class TeamManager {
                 player = new Player(
                          rs.getString("name"),
                          rs.getString("age"),
-                         rs.getDouble("height"),
-                         rs.getDouble("weight"),
                          rs.getString("position"),
                          rs.getDouble("points"),
                          rs.getDouble("rebounds"),
