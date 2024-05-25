@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TeamManager {
-    private static final String teamdb = "jdbc:derby:teamDB;create=true"; // teamdb URL
+    private static final String teamdb = "jdbc:derby://localhost:1527/teamDB;create=true"; // teamdb URL
     private static Connection conn = null;
     public TeamManager() {
         createTeamTable();
@@ -23,7 +23,7 @@ public class TeamManager {
 
     private void createTeamTable() {
         try{
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection(teamdb);
             Statement stmt = conn.createStatement();
             String sql = "CREATE TABLE team ("
@@ -89,6 +89,8 @@ public class TeamManager {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, player.getName());
             pstmt.setString(2, player.getAge());
+            pstmt.setDouble(3, player.getHeight());
+            pstmt.setDouble(4, player.getWeight());
             pstmt.setString(5, player.getPosition());
             pstmt.setString(6, player.getSalary());
             pstmt.setDouble(7, player.getPoints());
@@ -138,6 +140,8 @@ public class TeamManager {
                 player = new Player(
                          rs.getString("name"),
                          rs.getString("age"),
+                         rs.getDouble("height"),
+                         rs.getDouble("weight"),
                          rs.getString("position"),
                          rs.getDouble("points"),
                          rs.getDouble("rebounds"),
@@ -175,9 +179,6 @@ public class TeamManager {
                 invalid += "\nAt least 2 centers (C) are required.";
             return invalid;
         }
-    }
-    public static void main(String[] args){
-        TeamManager tm = new TeamManager();
     }
 }
 

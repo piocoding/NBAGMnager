@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class PlayersDerby {
-    private static final String playerdb = "jdbc:derby:statsdb;create=true"; // playerdb URL
+    private static final String playerdb = "jdbc:derby:MyDatabase"; // playerdb URL
 
     public static void main(String[] args) {
         try (Connection connection = DriverManager.getConnection(playerdb)) {
@@ -36,7 +36,7 @@ public class PlayersDerby {
     }
 
     public static Player getPlayerByName(Connection connection, String playerName) {
-        String sql = "SELECT name, age, position, points, rebounds, assists, steals, blocks FROM MyTable WHERE name = '" + playerName + "'";
+        String sql = "SELECT name, age, height, weight, position, points, rebounds, assists, steals, blocks FROM MyTable WHERE name = '" + playerName + "'";
 
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             if (rs.next()) {
@@ -51,6 +51,8 @@ public class PlayersDerby {
     private static Player createPlayerFromResultSet(ResultSet rs) throws SQLException {
         String name = rs.getString("name");
         String age = rs.getString("age");
+        double height = rs.getDouble("height");
+        double weight = rs.getDouble("weight");
         String position = rs.getString("position");
         double points = rs.getDouble("points");
         double rebounds = rs.getDouble("rebounds");
@@ -58,7 +60,7 @@ public class PlayersDerby {
         double steals = rs.getDouble("steals");
         double blocks = rs.getDouble("blocks");
 
-        return new Player(name, age, position, points, rebounds, assists, steals, blocks);
+        return new Player(name, age, height, weight, position, points, rebounds, assists, steals, blocks);
     }
 
     public static Connection getConnection() throws SQLException {
