@@ -79,7 +79,7 @@ public class JFrame extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        searchResults = new javax.swing.JTextArea();
         ScheduleCard = new javax.swing.JPanel();
         mapButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -369,9 +369,9 @@ public class JFrame extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(200, 200, 200));
         jLabel23.setText("≥");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        searchResults.setColumns(20);
+        searchResults.setRows(5);
+        jScrollPane3.setViewportView(searchResults);
 
         javax.swing.GroupLayout SearchCardLayout = new javax.swing.GroupLayout(SearchCard);
         SearchCard.setLayout(SearchCardLayout);
@@ -707,7 +707,8 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mapButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        //Should get all the values from text field and input into sql as query
+        
+        searchResults.setText("");
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void positionOptionBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionOptionBoxActionPerformed
@@ -834,7 +835,6 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JButton mapButton;
@@ -851,6 +851,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> positionOptionBox;
     private javax.swing.JButton removeButton;
     private javax.swing.JButton searchButton;
+    private javax.swing.JTextArea searchResults;
     private javax.swing.JButton statsButton;
     // End of variables declaration//GEN-END:variables
 }
