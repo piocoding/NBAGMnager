@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TeamManager {
-    private static final String teamdb = "jdbc:derby://localhost:1527/teamDB;create=true"; // teamdb URL
+    private static final String teamdb = "jdbc:derby:teamDB;create=true"; // teamdb URL
     private static Connection conn = null;
     public TeamManager() {
         createTeamTable();
@@ -84,13 +84,11 @@ public class TeamManager {
     }
 
     private String addPlayerToTeamDB(Player player) {
-        String sql = "INSERT INTO team (name, age, height, weight, position, salary, points, rebounds, assists, steals, blocks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO team (name, age, position, salary, points, rebounds, assists, steals, blocks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(teamdb);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, player.getName());
             pstmt.setString(2, player.getAge());
-            pstmt.setDouble(3, player.getHeight());
-            pstmt.setDouble(4, player.getWeight());
             pstmt.setString(5, player.getPosition());
             pstmt.setString(6, player.getSalary());
             pstmt.setDouble(7, player.getPoints());
@@ -140,8 +138,6 @@ public class TeamManager {
                 player = new Player(
                          rs.getString("name"),
                          rs.getString("age"),
-                         rs.getDouble("height"),
-                         rs.getDouble("weight"),
                          rs.getString("position"),
                          rs.getDouble("points"),
                          rs.getDouble("rebounds"),
