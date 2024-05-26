@@ -74,6 +74,8 @@ public class StatsWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(200, 200, 200));
         jLabel3.setText("Name:");
@@ -110,30 +112,39 @@ public class StatsWindow extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(200, 200, 200));
         jLabel22.setText("Blocks:");
 
+        nameArea.setEditable(false);
         nameArea.setColumns(20);
         nameArea.setRows(5);
 
+        ageArea.setEditable(false);
         ageArea.setColumns(20);
         ageArea.setRows(5);
 
+        positionArea.setEditable(false);
         positionArea.setColumns(20);
         positionArea.setRows(5);
 
+        pointsArea.setEditable(false);
         pointsArea.setColumns(20);
         pointsArea.setRows(5);
 
+        salaryArea.setEditable(false);
         salaryArea.setColumns(20);
         salaryArea.setRows(5);
 
+        reboundsArea.setEditable(false);
         reboundsArea.setColumns(20);
         reboundsArea.setRows(5);
 
+        assistsArea.setEditable(false);
         assistsArea.setColumns(20);
         assistsArea.setRows(5);
 
+        stealsArea.setEditable(false);
         stealsArea.setColumns(20);
         stealsArea.setRows(5);
 
+        blocksArea.setEditable(false);
         blocksArea.setColumns(20);
         blocksArea.setRows(5);
 
