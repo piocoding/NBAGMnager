@@ -20,8 +20,12 @@ import java.sql.Statement;
 
 public class PlayerStats {
     private static final String csvFile = "statistics.csv"; //change accordingly
-    private static final String statsUrl = "jdbc:derby:statsdb;create=true";
+    private static final String statsUrl = "jdbc:derby:nbadb;create=true";
     private static Connection connection = null;
+    
+    public static void main (String[] args){
+        statsdatabase();
+    }
     
     public static void statsdatabase(){
         try{
