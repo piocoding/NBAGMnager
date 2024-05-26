@@ -1,5 +1,6 @@
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -724,7 +725,7 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RosterPlayerNameFieldActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        team.removePlayer(RosterPlayerNameField.getText());
+        JOptionPane.showMessageDialog(null, team.removePlayer(RosterPlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
@@ -749,7 +750,7 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_morePlayerIdFieldActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        team.addPlayerFromSourceDB(RosterPlayerNameField.getText());
+        JOptionPane.showMessageDialog(null, team.addPlayerFromSourceDB(RosterPlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_addButtonActionPerformed
 
     /**
