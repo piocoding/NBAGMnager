@@ -914,7 +914,7 @@
                                           <Component id="extendedButton" min="-2" pref="128" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="morePlayerIdField" min="-2" pref="238" max="-2" attributes="0"/>
+                                          <Component id="morePlayerNameField" min="-2" pref="238" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="injuredButton" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -935,7 +935,7 @@
                           <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="morePlayerIdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="morePlayerNameField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="expiringButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="injuredButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1052,9 +1052,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="injuredButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="morePlayerIdField">
+                <Component class="javax.swing.JTextField" name="morePlayerNameField">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="morePlayerIdFieldActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="morePlayerNameFieldActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel26">
@@ -1065,7 +1065,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c8" green="c8" red="c8" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Player ID:"/>
+                    <Property name="text" type="java.lang.String" value="Player Name:"/>
                   </Properties>
                 </Component>
               </SubComponents>

@@ -96,7 +96,7 @@ public class JFrame extends javax.swing.JFrame {
         extendedButton = new javax.swing.JButton();
         expiringButton = new javax.swing.JButton();
         injuredButton = new javax.swing.JButton();
-        morePlayerIdField = new javax.swing.JTextField();
+        morePlayerNameField = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -601,15 +601,15 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        morePlayerIdField.addActionListener(new java.awt.event.ActionListener() {
+        morePlayerNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                morePlayerIdFieldActionPerformed(evt);
+                morePlayerNameFieldActionPerformed(evt);
             }
         });
 
         jLabel26.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(200, 200, 200));
-        jLabel26.setText("Player ID:");
+        jLabel26.setText("Player Name:");
 
         javax.swing.GroupLayout MoreCardLayout = new javax.swing.GroupLayout(MoreCard);
         MoreCard.setLayout(MoreCardLayout);
@@ -634,7 +634,7 @@ public class JFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(extendedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MoreCardLayout.createSequentialGroup()
-                                .addComponent(morePlayerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(morePlayerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(injuredButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -649,7 +649,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(morePlayerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(morePlayerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(expiringButton)
                     .addComponent(injuredButton))
                 .addGap(18, 18, 18)
@@ -745,9 +745,9 @@ public class JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_injuredButtonActionPerformed
 
-    private void morePlayerIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_morePlayerIdFieldActionPerformed
+    private void morePlayerNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_morePlayerNameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_morePlayerIdFieldActionPerformed
+    }//GEN-LAST:event_morePlayerNameFieldActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         JOptionPane.showMessageDialog(null, team.addPlayerFromSourceDB(RosterPlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
@@ -847,7 +847,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField minPointsField;
     private javax.swing.JTextField minReboundsField;
     private javax.swing.JTextField minStealsField;
-    private javax.swing.JTextField morePlayerIdField;
+    private javax.swing.JTextField morePlayerNameField;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> positionOptionBox;
     private javax.swing.JButton removeButton;
