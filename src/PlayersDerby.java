@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class PlayersDerby {
-    private static final String playerdb = "jdbc:derby:MyDatabase"; // playerdb URL
+    private static final String playerdb = "jdbc:derby:NBAdb"; // playerdb URL
 
     public static void main(String[] args) {
         try (Connection connection = DriverManager.getConnection(playerdb)) {
@@ -36,7 +36,7 @@ public class PlayersDerby {
     }
 
     public static Player getPlayerByName(Connection connection, String playerName) {
-        String sql = "SELECT name, age, position, points, rebounds, assists, steals, blocks FROM MyTable WHERE name = '" + playerName + "'";
+        String sql = "SELECT name, age, position, points, rebounds, assists, steals, blocks FROM statistics WHERE name = '" + playerName + "'";
 
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             if (rs.next()) {

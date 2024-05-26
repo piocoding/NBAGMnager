@@ -20,7 +20,7 @@ import java.sql.Statement;
 
 public class PlayerStats {
     private static final String csvFile = "statistics.csv"; //change accordingly
-    private static final String statsUrl = "jdbc:derby:nbadb;create=true";
+    private static final String statsUrl = "jdbc:derby:NBAdb;create=true";
     private static Connection connection = null;
     
     public static void main (String[] args){
@@ -62,7 +62,9 @@ public class PlayerStats {
             System.out.println("Table successfully created.");
         
         }catch(SQLException e){
-            e.printStackTrace();
+            if (!"X0Y32".equals(e.getSQLState())) { // Table already exists
+                e.printStackTrace();
+            }
         }
     }
     

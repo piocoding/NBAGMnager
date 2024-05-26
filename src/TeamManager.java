@@ -15,22 +15,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TeamManager {
-    private static final String teamdb = "jdbc:derby:teamDB;create=true"; // teamdb URL
+    private static final String nbadb = "jdbc:derby:NBAdb;create=true"; // teamdb URL
     private static Connection conn = null;
+    
     public TeamManager() {
         createTeamTable();
     }
 
     private void createTeamTable() {
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection(teamdb);
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            conn = DriverManager.getConnection(nbadb);
             Statement stmt = conn.createStatement();
             String sql = "CREATE TABLE team ("
                        + "name VARCHAR(255), "
                        + "age VARCHAR(255), "
-                       + "height VARCHAR(255), "
-                       + "weight VARCHAR(255), "
                        + "position VARCHAR(255), "
                        + "salary VARCHAR(255), "
                        + "points VARCHAR(255), "
@@ -69,7 +68,7 @@ public class TeamManager {
 
     private boolean isPlayerInTeam(String name) {
         String sql = "SELECT COUNT(*) FROM team WHERE name = ?";
-        try (Connection conn = DriverManager.getConnection(teamdb);
+        try (Connection conn = DriverManager.getConnection(nbadb);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             try (ResultSet rs = pstmt.executeQuery()) {
@@ -85,7 +84,7 @@ public class TeamManager {
 
     private String addPlayerToTeamDB(Player player) {
         String sql = "INSERT INTO team (name, age, position, salary, points, rebounds, assists, steals, blocks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DriverManager.getConnection(teamdb);
+        try (Connection conn = DriverManager.getConnection(nbadb);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, player.getName());
             pstmt.setString(2, player.getAge());
@@ -110,7 +109,7 @@ public class TeamManager {
         }
 
         String sql = "DELETE FROM team WHERE name = ?";
-        try (Connection conn = DriverManager.getConnection(teamdb);
+        try (Connection conn = DriverManager.getConnection(nbadb);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, playerName);
             int rowsAffected = pstmt.executeUpdate();
@@ -131,7 +130,7 @@ public class TeamManager {
         int F = 0, G = 0, C = 0;
         double totalSalary = 0;
 
-        try (Connection conn = DriverManager.getConnection(teamdb);
+        try (Connection conn = DriverManager.getConnection(nbadb);
          PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM team");
          ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
