@@ -46,55 +46,45 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel15" alignment="1" min="-2" pref="60" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                  <Component id="ageArea" min="-2" pref="134" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="salaryArea" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace pref="1" max="-2" attributes="0"/>
-                                          <Component id="pointsArea" min="-2" pref="134" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="positionArea" min="-2" pref="134" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel12" alignment="1" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="reboundsArea" min="-2" pref="117" max="-2" attributes="0"/>
-                              <Component id="assistsArea" min="-2" pref="117" max="-2" attributes="0"/>
-                              <Component id="stealsArea" min="-2" pref="117" max="-2" attributes="0"/>
-                              <Component id="blocksArea" min="-2" pref="117" max="-2" attributes="0"/>
+                              <Component id="positionArea" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="ageArea" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="pointsArea" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="salaryArea" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel20" min="-2" pref="73" max="-2" attributes="0"/>
+                              <Component id="jLabel19" min="-2" pref="73" max="-2" attributes="0"/>
+                              <Component id="jLabel22" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="assistsArea" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="reboundsArea" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="blocksArea" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="stealsArea" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="nameArea" min="-2" pref="354" max="-2" attributes="0"/>
+                          <Component id="nameArea" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="82" max="32767" attributes="0"/>
+                  <EmptySpace pref="51" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -104,44 +94,46 @@
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="nameArea" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ageArea" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="reboundsArea" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="positionArea" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="assistsArea" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="nameArea" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="stealsArea" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="ageArea" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="positionArea" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="salaryArea" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="pointsArea" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="blocksArea" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="salaryArea" min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="reboundsArea" min="-2" pref="26" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="pointsArea" min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="assistsArea" min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="stealsArea" min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="blocksArea" min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -253,13 +245,6 @@
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextArea" name="ageArea">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="rows" type="int" value="5"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextArea" name="positionArea">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
@@ -267,7 +252,7 @@
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextArea" name="pointsArea">
+        <Component class="javax.swing.JTextArea" name="ageArea">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
@@ -281,14 +266,14 @@
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextArea" name="reboundsArea">
+        <Component class="javax.swing.JTextArea" name="pointsArea">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextArea" name="assistsArea">
+        <Component class="javax.swing.JTextArea" name="blocksArea">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
@@ -302,7 +287,14 @@
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextArea" name="blocksArea">
+        <Component class="javax.swing.JTextArea" name="assistsArea">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextArea" name="reboundsArea">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
