@@ -40,9 +40,9 @@ public class Player {
     }
 
     public String getPosition() {
-        if (position == "G")
+        if (position.contains("G"))
             return "Guards";
-        else if (position == "F")
+        else if (position.contains("F"))
             return "Forwards";
         else
             return "Centers";
