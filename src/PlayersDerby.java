@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class PlayersDerby {
-    private static final String playerdb = "jdbc:derby:NBAdb"; // playerdb URL
+    private static final String playerdb = "jdbc:derby://localhost:1527/NBAdb"; // playerdb URL
 
     public static void main(String[] args) {
         try (Connection connection = DriverManager.getConnection(playerdb)) {

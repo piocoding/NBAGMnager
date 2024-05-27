@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TeamManager {
-    private static final String nbadb = "jdbc:derby:NBAdb;create=true"; // teamdb URL
+    private static final String nbadb = "jdbc:derby://localhost:1527/NBAdb;create=true"; // teamdb URL
     private static Connection conn = null;
     
     public TeamManager() {
