@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author sofiashahrir
  */
 public class StatsWindow extends javax.swing.JFrame {
-    private static final String playerdb = "jdbc:derby:MyDatabase";
+    private static final String playerdb = "jdbc:derby:NBAdb";
     /**
      * Creates new form StatsWindow
      */
