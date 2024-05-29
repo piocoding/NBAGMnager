@@ -51,6 +51,7 @@ public class JFrame extends javax.swing.JFrame {
         statsButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         teamArea = new javax.swing.JTextArea();
+        rankingButton = new javax.swing.JButton();
         SearchCard = new javax.swing.JPanel();
         searchButton = new javax.swing.JButton();
         nameField = new javax.swing.JTextField();
@@ -227,24 +228,34 @@ public class JFrame extends javax.swing.JFrame {
         teamArea.setRows(5);
         jScrollPane2.setViewportView(teamArea);
 
+        rankingButton.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
+        rankingButton.setText("Performance Ranking");
+        rankingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rankingButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout RosterCardLayout = new javax.swing.GroupLayout(RosterCard);
         RosterCard.setLayout(RosterCardLayout);
         RosterCardLayout.setHorizontalGroup(
             RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RosterCardLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jLabel7)
-                    .addGroup(RosterCardLayout.createSequentialGroup()
-                        .addComponent(RosterPlayerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(statsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGroup(RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane2)
+                        .addComponent(jLabel7)
+                        .addGroup(RosterCardLayout.createSequentialGroup()
+                            .addComponent(RosterPlayerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(46, 46, 46)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(statsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(rankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         RosterCardLayout.setVerticalGroup(
             RosterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,8 +269,10 @@ public class JFrame extends javax.swing.JFrame {
                     .addComponent(removeButton)
                     .addComponent(addButton))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rankingButton)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         PanelCards.add(RosterCard, "RosterCard");
@@ -758,6 +771,10 @@ public class JFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, team.addPlayerFromSourceDB(RosterPlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_addButtonActionPerformed
 
+    private void rankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingButtonActionPerformed
+        new RankingWindow().setVisible(true);
+    }//GEN-LAST:event_rankingButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -853,6 +870,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField morePlayerNameField;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> positionOptionBox;
+    private javax.swing.JButton rankingButton;
     private javax.swing.JButton removeButton;
     private javax.swing.JTextArea scheduleArea;
     private javax.swing.JButton searchButton;
