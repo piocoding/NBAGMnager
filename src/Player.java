@@ -39,14 +39,22 @@ public class Player {
     }
 
     public String getSalary() {
-        if (points == 37.5)
+        if (points >= 35)
             return "5000";
-        else if (points >= 28.8 && points < 37.5)
+        else if (points >= 31.25)
+            return "4500";
+        else if (points >= 27.5)
             return "4000";
-        else if (points >= 20.0 && points < 28.8)
+        else if (points >= 23.75)
+            return "3500";
+        else if (points >= 20.0)
             return "3000";
-        else if (points >= 11.6 && points < 20)
+        else if (points >= 17.5)
+            return "2500";
+        else if (points >= 15.0)
             return "2000";
+        else if (points >= 11.5)
+            return "1500";
         else
             return "1000";
     }
