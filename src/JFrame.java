@@ -50,7 +50,7 @@ public class JFrame extends javax.swing.JFrame {
         removeButton = new javax.swing.JButton();
         statsButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        teamArea = new javax.swing.JTextArea();
         SearchCard = new javax.swing.JPanel();
         searchButton = new javax.swing.JButton();
         nameField = new javax.swing.JTextField();
@@ -84,14 +84,14 @@ public class JFrame extends javax.swing.JFrame {
         ScheduleCard = new javax.swing.JPanel();
         mapButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        scheduleArea = new javax.swing.JTextArea();
         MoreCard = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         clearedToPlayButton = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        injuryArea = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        contractArea = new javax.swing.JTextArea();
         jLabel25 = new javax.swing.JLabel();
         extendedButton = new javax.swing.JButton();
         expiringButton = new javax.swing.JButton();
@@ -222,9 +222,10 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        teamArea.setEditable(false);
+        teamArea.setColumns(20);
+        teamArea.setRows(5);
+        jScrollPane2.setViewportView(teamArea);
 
         javax.swing.GroupLayout RosterCardLayout = new javax.swing.GroupLayout(RosterCard);
         RosterCard.setLayout(RosterCardLayout);
@@ -370,6 +371,7 @@ public class JFrame extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(200, 200, 200));
         jLabel23.setText("≥");
 
+        searchResults.setEditable(false);
         searchResults.setColumns(20);
         searchResults.setRows(5);
         jScrollPane3.setViewportView(searchResults);
@@ -529,9 +531,10 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        scheduleArea.setEditable(false);
+        scheduleArea.setColumns(20);
+        scheduleArea.setRows(5);
+        jScrollPane1.setViewportView(scheduleArea);
 
         javax.swing.GroupLayout ScheduleCardLayout = new javax.swing.GroupLayout(ScheduleCard);
         ScheduleCard.setLayout(ScheduleCardLayout);
@@ -570,13 +573,15 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        injuryArea.setEditable(false);
+        injuryArea.setColumns(20);
+        injuryArea.setRows(5);
+        jScrollPane4.setViewportView(injuryArea);
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
+        contractArea.setEditable(false);
+        contractArea.setColumns(20);
+        contractArea.setRows(5);
+        jScrollPane5.setViewportView(contractArea);
 
         jLabel25.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(200, 200, 200));
@@ -797,9 +802,11 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JPanel SearchCard;
     private javax.swing.JButton addButton;
     private javax.swing.JButton clearedToPlayButton;
+    private javax.swing.JTextArea contractArea;
     private javax.swing.JButton expiringButton;
     private javax.swing.JButton extendedButton;
     private javax.swing.JButton injuredButton;
+    private javax.swing.JTextArea injuryArea;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -834,10 +841,6 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JButton mapButton;
     private javax.swing.JTextField maxAgeField;
     private javax.swing.JTextField maxSalaryField;
@@ -851,8 +854,10 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> positionOptionBox;
     private javax.swing.JButton removeButton;
+    private javax.swing.JTextArea scheduleArea;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextArea searchResults;
     private javax.swing.JButton statsButton;
+    private javax.swing.JTextArea teamArea;
     // End of variables declaration//GEN-END:variables
 }
