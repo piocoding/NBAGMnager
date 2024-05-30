@@ -225,6 +225,7 @@ public class JFrame extends javax.swing.JFrame {
 
         teamArea.setEditable(false);
         teamArea.setColumns(20);
+        teamArea.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
         teamArea.setRows(5);
         jScrollPane2.setViewportView(teamArea);
 
@@ -744,6 +745,7 @@ public class JFrame extends javax.swing.JFrame {
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         JOptionPane.showMessageDialog(null, team.removePlayer(RosterPlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
+        teamArea.setText(team.getTeam());
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
@@ -769,6 +771,7 @@ public class JFrame extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         JOptionPane.showMessageDialog(null, team.addPlayerFromSourceDB(RosterPlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
+        teamArea.setText(team.getTeam());
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void rankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingButtonActionPerformed

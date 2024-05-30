@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class SearchPlayer {
 
-    private static final String nbadb = "jdbc:derby://localhost:1527/NBAdb"; // teamdb URL
+    private static final String nbadb = "jdbc:derby://localhost:1527/NBAdb;create=true"; // teamdb URL
 
     public Player searchPlayerByAttributes(double height, double weight, String position, double defenseSkill) {
         try (Connection conn = DriverManager.getConnection(nbadb)) {
