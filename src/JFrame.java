@@ -22,6 +22,8 @@ public class JFrame extends javax.swing.JFrame {
         initComponents();
         
         cardLayout = (CardLayout) (PanelCards.getLayout());
+        teamArea.setText(team.getTeam());
+        
     }
 
     /**
