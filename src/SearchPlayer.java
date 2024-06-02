@@ -1,115 +1,86 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class SearchPlayer {
 
-    private static final String nbadb = "jdbc:derby://localhost:1527/NBAdb;create=true"; // teamdb URL
+    // Method to search for players based on specified criteria
+    public static void search(String playerName, String position, String minAge, String maxAge, String salary, String points, String rebounds, String assists, String steals, String blocks) throws SQLException {
+        // StringBuilder to dynamically construct the SQL query
+        StringBuilder query = new StringBuilder("SELECT * FROM statistics WHERE 1=1");
+        // select all columns from a table named statistics where the condition 1=1 is always true
+        
+        // Constructing SQL query based on provided criteria
+        // If the playerName parameter is not empty
+        // it appends a condition to match player names containing the provided string using the SQL LIKE operator
+        if (!playerName.isEmpty()) {
+            query.append(" AND name LIKE '%").append(playerName).append("%'");
+        }
+        // If the position parameter is not equal to "Any"
+        // it appends a condition to match players with the specified position
+        if (!position.equals("Any")) {
+            query.append(" AND position='").append(position).append("'");
+        }
+        // If the minAge parameter is not empty
+        // it appends a condition to match players with age greater than or equal to the specified minimum age
+        if (!minAge.isEmpty()) {
+            query.append(" AND age >= ").append(minAge);
+        }
+        // If the maxAge parameter is not empty
+        if (!maxAge.isEmpty()) {
+            query.append(" AND age <= ").append(maxAge);
+        }
+        if (!salary.isEmpty()) {
+            query.append(" AND salary <= ").append(Double.parseDouble(salary));
+        }
+        if (!points.isEmpty()) {
+            query.append(" AND points >= ").append(Double.parseDouble(points));
+        }
+        if (!rebounds.isEmpty()) {
+            query.append(" AND rebounds >= ").append(Double.parseDouble(rebounds));
+        }
+        if (!assists.isEmpty()) {
+            query.append(" AND assists >= ").append(Double.parseDouble(assists));
+        }
+        if (!steals.isEmpty()) {
+            query.append(" AND steals >= ").append(Double.parseDouble(steals));
+        }
+        if (!blocks.isEmpty()) {
+            query.append(" AND blocks >= ").append(Double.parseDouble(blocks));
+        }
 
-    // Method to search for a player based on specified attributes
-    public Player searchPlayerByAttributes(String name, String age, String position, String salary,
-                                           Double points, Double rebounds, Double assists,
-                                           Double steals, Double blocks) {
-        try (Connection conn = DriverManager.getConnection(nbadb)) {
-            String sql = buildDynamicQuery(name, age, position, salary, points, rebounds, assists, steals, blocks);
-            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                int paramIndex = 1;
+        // Database connection and query execution
+        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/NBAdb");
+             Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(query.toString())) {
 
-                // Set parameters for the prepared statement
-                if (name != null && !name.isEmpty()) {
-                    pstmt.setString(paramIndex++, name);
-                }
-                if (age != null && !age.isEmpty()) {
-                    pstmt.setString(paramIndex++, age);
-                }
-                if (position != null && !position.isEmpty()) {
-                    pstmt.setString(paramIndex++, position);
-                }
-                if (salary != null && !salary.isEmpty()) {
-                    pstmt.setString(paramIndex++, salary);
-                }
-                if (points != null) {
-                    pstmt.setDouble(paramIndex++, points);
-                }
-                if (rebounds != null) {
-                    pstmt.setDouble(paramIndex++, rebounds);
-                }
-                if (assists != null) {
-                    pstmt.setDouble(paramIndex++, assists);
-                }
-                if (steals != null) {
-                    pstmt.setDouble(paramIndex++, steals);
-                }
-                if (blocks != null) {
-                    pstmt.setDouble(paramIndex++, blocks);
-                }
+            StringBuilder sb = new StringBuilder();
+            int count = 0;
 
-                try (ResultSet rs = pstmt.executeQuery()) {
-                    if (rs.next()) {
-                        return createPlayerFromResultSet(rs);
-                    }
-                }
+            // Processing ResultSet to build player statistics
+            while (rs.next()) {
+                sb.append("Player: ").append(rs.getString("name")).append("\n");
+                sb.append("Position: ").append(rs.getString("position")).append("\n");
+                sb.append("Age: ").append(rs.getInt("age")).append("\n");
+                sb.append("Points: ").append(rs.getDouble("points")).append("\n");
+                sb.append("Rebounds: ").append(rs.getDouble("rebounds")).append("\n");
+                sb.append("Assists: ").append(rs.getDouble("assists")).append("\n");
+                sb.append("Steals: ").append(rs.getDouble("steals")).append("\n");
+                sb.append("Blocks: ").append(rs.getDouble("blocks")).append("\n\n");
+                count++;
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+
+            // Printing results or a message if no players found
+            if (count == 0) {
+                System.out.println("No players found with the given criteria.");
+            } else {
+                System.out.println(sb.toString());
+            }
+        } catch (Exception e) {
+            // Handling any exceptions that occur during database access or query execution
+            e.printStackTrace();
         }
-        return null; // Return null if no player matching the criteria is found
     }
-
-    // Method to dynamically build the SQL query based on search attributes
-    private String buildDynamicQuery(String name, String age, String position, String salary,
-                                     Double points, Double rebounds, Double assists,
-                                     Double steals, Double blocks) {
-        StringBuilder query = new StringBuilder("SELECT * FROM team WHERE 1=1");
-
-        // Add conditions based on provided attributes
-        if (name != null && !name.isEmpty()) {
-            query.append(" AND name = ?");
-        }
-        if (age != null && !age.isEmpty()) {
-            query.append(" AND age = ?");
-        }
-        if (position != null && !position.isEmpty()) {
-            query.append(" AND position = ?");
-        }
-        if (salary != null && !salary.isEmpty()) {
-            query.append(" AND salary = ?");
-        }
-        if (points != null) {
-            query.append(" AND points = ?");
-        }
-        if (rebounds != null) {
-            query.append(" AND rebounds = ?");
-        }
-        if (assists != null) {
-            query.append(" AND assists = ?");
-        }
-        if (steals != null) {
-            query.append(" AND steals = ?");
-        }
-        if (blocks != null) {
-            query.append(" AND blocks = ?");
-        }
-
-        return query.toString();
-    }
-
-    // Method to create a Player object from the database result set
-    private Player createPlayerFromResultSet(ResultSet rs) throws SQLException {
-        String name = rs.getString("name");
-        String age = rs.getString("age");
-        String position = rs.getString("position");
-        String salary = rs.getString("salary");
-        double points = rs.getDouble("points");
-        double rebounds = rs.getDouble("rebounds");
-        double assists = rs.getDouble("assists");
-        double steals = rs.getDouble("steals");
-        double blocks = rs.getDouble("blocks");
-
-        return new Player(name, age, position, points, rebounds, assists, steals, blocks);
-    }
-    
-   
 }
