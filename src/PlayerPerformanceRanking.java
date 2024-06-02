@@ -57,11 +57,11 @@ public class PlayerPerformanceRanking {
         }
     }
     
-    public String printTeamByRank(){
+    public static String printTeamByRank(){
         String teamByRank = "";
         int rank = 0;
         try (Connection conn = DriverManager.getConnection(nbadb);
-                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM team GROUP BY composite_score");
+                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM team ORDER BY composite_score DESC");
                 ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
                 Player player = new Player(
