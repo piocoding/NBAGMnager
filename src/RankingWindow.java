@@ -14,6 +14,7 @@ public class RankingWindow extends javax.swing.JFrame {
      */
     public RankingWindow() {
         initComponents();
+        rankingArea.setText(PlayerPerformanceRanking.printTeamByRank());
     }
 
     /**
@@ -28,7 +29,7 @@ public class RankingWindow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        rankingArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -39,10 +40,10 @@ public class RankingWindow extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(200, 200, 200));
         jLabel1.setText("Player Performance Ranking");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        rankingArea.setEditable(false);
+        rankingArea.setColumns(20);
+        rankingArea.setRows(5);
+        jScrollPane1.setViewportView(rankingArea);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,6 +121,6 @@ public class RankingWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea rankingArea;
     // End of variables declaration//GEN-END:variables
 }
