@@ -9,7 +9,8 @@ public class Player {
     private double assists;
     private double steals;
     private double blocks;
-
+    private PlayerPerformanceRanking compositeScore;
+    
     public Player(String name, String age, String position, double points, double rebounds, double assists, double steals, double blocks) {
         this.name = name;
         this.age = age;
@@ -19,6 +20,7 @@ public class Player {
         this.assists = assists;
         this.steals = steals;
         this.blocks = blocks;
+        this.compositeScore = new PlayerPerformanceRanking(this);
     }
 
     public String getName() {
@@ -77,5 +79,9 @@ public class Player {
 
     public double getBlocks() {
         return blocks;
+    }
+    
+    public double getCompositeScore(){
+        return compositeScore.calcCompositeScore();
     }
 }
