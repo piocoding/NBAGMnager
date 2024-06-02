@@ -42,6 +42,7 @@ public class RankingWindow extends javax.swing.JFrame {
 
         rankingArea.setEditable(false);
         rankingArea.setColumns(20);
+        rankingArea.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
         rankingArea.setRows(5);
         jScrollPane1.setViewportView(rankingArea);
 
