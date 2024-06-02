@@ -15,14 +15,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TeamManager {
+
     private static final String nbadb = "jdbc:derby://localhost:1527/NBAdb;create=true"; // teamdb URL
     private static Connection conn = null;
-    private InjuryReserveManagement injuryReserve;
-    private ContractExtensionQueue contractQueue;
 
     public TeamManager() {
-        injuryReserve = new InjuryReserveManagement();
-        contractQueue = new ContractExtensionQueue();
         createTeamTable();
     }
 
@@ -32,15 +29,15 @@ public class TeamManager {
             conn = DriverManager.getConnection(nbadb);
             Statement stmt = conn.createStatement();
             String sql = "CREATE TABLE team ("
-                       + "name VARCHAR(255), "
-                       + "age VARCHAR(255), "
-                       + "position VARCHAR(255), "
-                       + "salary VARCHAR(255), "
-                       + "points DOUBLE, "
-                       + "rebounds DOUBLE, "
-                       + "assists DOUBLE, "
-                       + "steals DOUBLE, "
-                       + "blocks DOUBLE)";
+                    + "name VARCHAR(255), "
+                    + "age VARCHAR(255), "
+                    + "position VARCHAR(255), "
+                    + "salary VARCHAR(255), "
+                    + "points VARCHAR(255), "
+                    + "rebounds VARCHAR(255), "
+                    + "assists VARCHAR(255), "
+                    + "steals VARCHAR(255), "
+                    + "blocks VARCHAR(255))";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
             if (!"X0Y32".equals(e.getSQLState())) { // Table already exists
@@ -73,7 +70,7 @@ public class TeamManager {
     private boolean isPlayerInTeam(String name) {
         String sql = "SELECT COUNT(*) FROM team WHERE name = ?";
         try (Connection conn = DriverManager.getConnection(nbadb);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -87,9 +84,10 @@ public class TeamManager {
     }
 
     private String addPlayerToTeamDB(Player player) {
+        String returnstr = "";
         String sql = "INSERT INTO team (name, age, position, salary, points, rebounds, assists, steals, blocks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(nbadb);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, player.getName());
             pstmt.setString(2, player.getAge());
             pstmt.setString(3, player.getPosition());
@@ -100,7 +98,8 @@ public class TeamManager {
             pstmt.setDouble(8, player.getSteals());
             pstmt.setDouble(9, player.getBlocks());
             pstmt.executeUpdate();
-            return "Player added successfully.";
+            returnstr = "Player added successfully.";
+            return returnstr + "\n" + checkTeam();
         } catch (SQLException e) {
             e.printStackTrace();
             return "Error adding player.";
@@ -108,17 +107,19 @@ public class TeamManager {
     }
 
     public String removePlayer(String playerName) {
+        String returnstr = "";
         if (!isPlayerInTeam(playerName)) {
             return "Player not found in the team.";
         }
 
         String sql = "DELETE FROM team WHERE name = ?";
         try (Connection conn = DriverManager.getConnection(nbadb);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, playerName);
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                return "Player removed successfully.";
+                returnstr = "Player removed successfully.";
+                return returnstr + "\n" + checkTeam() + "\n";
             } else {
                 return "Error removing player.";
             }
@@ -128,94 +129,35 @@ public class TeamManager {
         }
     }
 
-    public void addPlayerToInjuryReserve(String playerName, String injury) {
-        Player player = getPlayerByName(playerName);
-        if (player != null) {
-            injuryReserve.addPlayerToInjuryReserve(player, injury);
-        } else {
-            System.out.println("Player not found in the team.");
-        }
-    }
-
-    public void removePlayerFromInjuryReserve() {
-        injuryReserve.removePlayerFromInjuryReserve();
-    }
-
-    public void displayInjuredPlayers() {
-        injuryReserve.displayInjuredPlayers();
-    }
-
-    public void addPlayerToContractQueue(String playerName) {
-        Player player = getPlayerByName(playerName);
-        if (player != null) {
-            contractQueue.addPlayerToQueue(player);
-        } else {
-            System.out.println("Player not found in the team.");
-        }
-    }
-
-    public void removePlayerFromContractQueue() {
-        contractQueue.removePlayerFromQueue();
-    }
-
-    public void displayContractQueue() {
-        contractQueue.displayContractQueue();
-    }
-
-    private Player getPlayerByName(String playerName) {
-        try (Connection conn = DriverManager.getConnection(nbadb)) {
-            String sql = "SELECT * FROM team WHERE name = ?";
-            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setString(1, playerName);
-                try (ResultSet rs = pstmt.executeQuery()) {
-                    if (rs.next()) {
-                        return new Player(
-                            rs.getString("name"),
-                            rs.getString("age"),
-                            rs.getString("position"),
-                            rs.getDouble("points"),
-                            rs.getDouble("rebounds"),
-                            rs.getDouble("assists"),
-                            rs.getDouble("steals"),
-                            rs.getDouble("blocks")
-                        );
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return null;
-    }
-
-    private String checkTeam(Player player) {
+    private String checkTeam() {
         StringBuilder result = new StringBuilder();
         int playerCount = 0;
         int F = 0, G = 0, C = 0;
         double totalSalary = 0;
 
         try (Connection conn = DriverManager.getConnection(nbadb);
-             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM team");
-             ResultSet rs = pstmt.executeQuery()) {
+                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM team");
+                ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
-                player = new Player(
-                    rs.getString("name"),
-                    rs.getString("age"),
-                    rs.getString("position"),
-                    rs.getDouble("points"),
-                    rs.getDouble("rebounds"),
-                    rs.getDouble("assists"),
-                    rs.getDouble("steals"),
-                    rs.getDouble("blocks")
+                Player player = new Player(
+                        rs.getString("name"),
+                        rs.getString("age"),
+                        rs.getString("position"),
+                        rs.getDouble("points"),
+                        rs.getDouble("rebounds"),
+                        rs.getDouble("assists"),
+                        rs.getDouble("steals"),
+                        rs.getDouble("blocks")
                 );
                 playerCount++;
                 totalSalary += Double.parseDouble(player.getSalary());
-                if (player.getPosition().equals("Forwards"))
+                if (player.getPosition().equals("Forwards")) {
                     F++;
-                else if (player.getPosition().equals("Guards"))
+                } else if (player.getPosition().equals("Guards")) {
                     G++;
-                else
+                } else {
                     C++;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -226,17 +168,37 @@ public class TeamManager {
         } else {
             // Determine specific invalid condition
             String invalid = "Team formed does not follow NBA rules.";
-            if (playerCount < 10 || playerCount > 15)
+            if (playerCount < 10 || playerCount > 15) {
                 invalid += "\nNumber of players must be between 10 to 15 players.";
-            if (totalSalary > 20000)
+            }
+            if (totalSalary > 20000) {
                 invalid += "\nCumulative salary for all players exceeds 20000.";
-            if (F < 2)
+            }
+            if (F < 2) {
                 invalid += "\nAt least 2 forwards (F) are required.";
-            if (G < 2)
+            }
+            if (G < 2) {
                 invalid += "\nAt least 2 guards (G) are required.";
-            if (C < 2)
+            }
+            if (C < 2) {
                 invalid += "\nAt least 2 centers (C) are required.";
+            }
             return invalid;
+        }
+    }
+
+    public String getTeam() {
+        try (Connection conn = DriverManager.getConnection(nbadb);
+                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM team");
+                ResultSet rs = pstmt.executeQuery()) {
+            String teamstr = "";
+            while (rs.next()) {
+                teamstr += rs.getString("Name") + " [" + rs.getString("Position") + "] " + rs.getDouble("Salary") + "MYR \n" ;
+            }
+            return teamstr;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Error getting team.";
         }
     }
 }
