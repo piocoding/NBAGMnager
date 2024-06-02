@@ -23,6 +23,7 @@ public class TeamManager {
         createTeamTable();
     }
 
+    // create team table
     private void createTeamTable() {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -33,11 +34,12 @@ public class TeamManager {
                     + "age VARCHAR(255), "
                     + "position VARCHAR(255), "
                     + "salary VARCHAR(255), "
-                    + "points VARCHAR(255), "
-                    + "rebounds VARCHAR(255), "
-                    + "assists VARCHAR(255), "
-                    + "steals VARCHAR(255), "
-                    + "blocks VARCHAR(255))";
+                    + "points DOUBLE, "
+                    + "rebounds DOUBLE, "
+                    + "assists DOUBLE, "
+                    + "steals DOUBLE, "
+                    + "blocks DOUBLE, "
+                    + "composite_score DOUBLE)";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
             if (!"X0Y32".equals(e.getSQLState())) { // Table already exists
@@ -85,18 +87,29 @@ public class TeamManager {
 
     private String addPlayerToTeamDB(Player player) {
         String returnstr = "";
-        String sql = "INSERT INTO team (name, age, position, salary, points, rebounds, assists, steals, blocks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        String position = player.getPosition();
+        double points = player.getPoints();
+        double rebounds = player.getRebounds();
+        double steals = player.getSteals();
+        double assists = player.getAssists();
+        double blocks = player.getBlocks();
+
+        double compositeScore = player.getCompositeScore();        
+        
+        String sql = "INSERT INTO team (name, age, position, salary, points, rebounds, assists, steals, blocks, composite_score) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(nbadb);
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, player.getName());
             pstmt.setString(2, player.getAge());
-            pstmt.setString(3, player.getPosition());
+            pstmt.setString(3, position);
             pstmt.setString(4, player.getSalary());
-            pstmt.setDouble(5, player.getPoints());
-            pstmt.setDouble(6, player.getRebounds());
-            pstmt.setDouble(7, player.getAssists());
-            pstmt.setDouble(8, player.getSteals());
-            pstmt.setDouble(9, player.getBlocks());
+            pstmt.setDouble(5, points);
+            pstmt.setDouble(6, rebounds);
+            pstmt.setDouble(7, assists);
+            pstmt.setDouble(8, steals);
+            pstmt.setDouble(9, blocks);
+            pstmt.setDouble(10, compositeScore);
             pstmt.executeUpdate();
             returnstr = "Player added successfully.";
             return returnstr + "\n" + checkTeam();
@@ -193,7 +206,7 @@ public class TeamManager {
                 ResultSet rs = pstmt.executeQuery()) {
             String teamstr = "";
             while (rs.next()) {
-                teamstr += rs.getString("Name") + " [" + rs.getString("Position") + "] " + rs.getDouble("Salary") + "MYR \n" ;
+                teamstr += rs.getString("Name") + " [" + rs.getString("Position") + "] " + rs.getDouble("Salary") + "MYR \n";
             }
             return teamstr;
         } catch (SQLException e) {
