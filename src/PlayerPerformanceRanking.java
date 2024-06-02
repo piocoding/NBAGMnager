@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -60,6 +61,8 @@ public class PlayerPerformanceRanking {
     public static String printTeamByRank(){
         String teamByRank = "";
         int rank = 0;
+        DecimalFormat df = new DecimalFormat("####0.000");
+
         try (Connection conn = DriverManager.getConnection(nbadb);
                 PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM team ORDER BY composite_score DESC");
                 ResultSet rs = pstmt.executeQuery()) {
@@ -75,7 +78,7 @@ public class PlayerPerformanceRanking {
                         rs.getDouble("blocks")
                 );
                 rank++;
-                teamByRank += player.getName() + " [" + player.getCompositeScore() + "] Rank : " + rank + "\n";
+                teamByRank += player.getName() + " [" + df.format(player.getCompositeScore()) + "] Rank : " + rank + "\n";
              }
         }catch (SQLException e) {
             e.printStackTrace();
