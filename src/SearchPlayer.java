@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class SearchPlayer {
 
     // Method to search for players based on specified criteria
-    public static void search(String playerName, String position, String minAge, String maxAge, String salary, String points, String rebounds, String assists, String steals, String blocks) throws SQLException {
+    public static String search(String playerName, String position, String minAge, String maxAge, String points, String rebounds, String assists, String steals, String blocks){
         // StringBuilder to dynamically construct the SQL query
         StringBuilder query = new StringBuilder("SELECT * FROM statistics WHERE 1=1");
         // select all columns from a table named statistics where the condition 1=1 is always true
@@ -21,7 +21,7 @@ public class SearchPlayer {
         // If the position parameter is not equal to "Any"
         // it appends a condition to match players with the specified position
         if (!position.equals("Any")) {
-            query.append(" AND position='").append(position).append("'");
+            query.append(" AND position LIKE '%").append(position.charAt(0)).append("%'");
         }
         // If the minAge parameter is not empty
         // it appends a condition to match players with age greater than or equal to the specified minimum age
@@ -32,9 +32,9 @@ public class SearchPlayer {
         if (!maxAge.isEmpty()) {
             query.append(" AND age <= ").append(maxAge);
         }
-        if (!salary.isEmpty()) {
-            query.append(" AND salary <= ").append(Double.parseDouble(salary));
-        }
+//        if (!salary.isEmpty()) {
+//            query.append(" AND salary <= ").append(Double.parseDouble(salary));
+//        }
         if (!points.isEmpty()) {
             query.append(" AND points >= ").append(Double.parseDouble(points));
         }
@@ -61,26 +61,27 @@ public class SearchPlayer {
 
             // Processing ResultSet to build player statistics
             while (rs.next()) {
-                sb.append("Player: ").append(rs.getString("name")).append("\n");
-                sb.append("Position: ").append(rs.getString("position")).append("\n");
-                sb.append("Age: ").append(rs.getInt("age")).append("\n");
+                sb.append("Player: ").append(rs.getString("name")).append(" ");
+                sb.append("[").append(rs.getString("position")).append("]\n");
+                sb.append("Age: ").append(rs.getInt("age")).append("    ");
                 sb.append("Points: ").append(rs.getDouble("points")).append("\n");
-                sb.append("Rebounds: ").append(rs.getDouble("rebounds")).append("\n");
+                sb.append("Rebounds: ").append(rs.getDouble("rebounds")).append("     ");
                 sb.append("Assists: ").append(rs.getDouble("assists")).append("\n");
-                sb.append("Steals: ").append(rs.getDouble("steals")).append("\n");
+                sb.append("Steals: ").append(rs.getDouble("steals")).append("            ");
                 sb.append("Blocks: ").append(rs.getDouble("blocks")).append("\n\n");
                 count++;
             }
 
             // Printing results or a message if no players found
             if (count == 0) {
-                System.out.println("No players found with the given criteria.");
+                return "No players found with the given criteria.";
             } else {
-                System.out.println(sb.toString());
+                return sb.toString();
             }
         } catch (Exception e) {
             // Handling any exceptions that occur during database access or query execution
             e.printStackTrace();
         }
+        return "Error getting players.";
     }
 }
