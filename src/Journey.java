@@ -26,7 +26,6 @@ public class Journey {
     };
     private final String[] cities;
     private ArrayList<Integer> pathIndex = new ArrayList<>();
-    private ArrayList<String> pathName = new ArrayList<>();
     private boolean[] visited = new boolean[distance.length];
     private int totalDistance;
     private int current;   
@@ -34,7 +33,14 @@ public class Journey {
     public Journey() {    
         cities = new String[]{"Spurs", "Warriors", "Celtics", "Heat", "Lakers", "Suns", "Magic", "Nuggets", "Thunder", "Rockets"};
         totalDistance = 0;
-        current = 0;   
+        current = 0;  
+        findShortestPath();
+    }
+    
+    public static void main(String[] args){
+        Journey j = new Journey();
+        System.out.println(j.getSchedule());
+        System.out.println(j.getTotalDistance());
     }
         
     public void findShortestPath(){
@@ -60,23 +66,24 @@ public class Journey {
                 minDistance = distance[current][i];
             }
         }
-        
         return nearest;
     }
     
-    public String printPath(){
-        for(int i=0;i<pathIndex.size();i++)
-            pathName.add(cities[pathIndex.get(i)]);
-        
-        return pathName.toString();
+    public String getSchedule(){
+        StringBuilder pathString = new StringBuilder();
+        for (int i=0;i<pathIndex.size();i++)
+            pathString.append((i+1)).append(". ").append(cities[pathIndex.get(i)]).append("\n");  
+        return pathString.toString();
     }
     
-    public int printTotalDistance(){
-        return totalDistance;
+    public String getTotalDistance(){
+        StringBuilder distanceString = new StringBuilder();
+        distanceString.append("Total distance traveled: ").append(totalDistance).append(" KM");
+        return distanceString.toString();
     }
     
-    public String printReasoning(){
-        return "This travel plan is the best because\n"
+    public String getReasoning(){
+        return "This travel plan is the best because:\n"
                 + "1. minimized physical and mental fatigue due to traveling\n" 
                 + "2. reduced travel stress from continuous long-distance travel\n"
                 + "3. less travel times, more preparation time";
