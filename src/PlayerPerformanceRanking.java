@@ -78,7 +78,7 @@ public class PlayerPerformanceRanking {
                         rs.getDouble("blocks")
                 );
                 rank++;
-                teamByRank += player.getName() + " [" + df.format(player.getCompositeScore()) + "] Rank : " + rank + "\n";
+                teamByRank += "Rank: " + rank + "\n" + player.getName() + "     [" + df.format(player.getCompositeScore()) + "]\n";
              }
         }catch (SQLException e) {
             e.printStackTrace();
