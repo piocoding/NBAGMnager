@@ -224,7 +224,7 @@ public class JFrame extends javax.swing.JFrame {
 
         teamArea.setEditable(false);
         teamArea.setColumns(20);
-        teamArea.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        teamArea.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         teamArea.setRows(5);
         jScrollPane2.setViewportView(teamArea);
 
@@ -376,7 +376,7 @@ public class JFrame extends javax.swing.JFrame {
 
         searchResults.setEditable(false);
         searchResults.setColumns(20);
-        searchResults.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        searchResults.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         searchResults.setRows(5);
         jScrollPane3.setViewportView(searchResults);
 
