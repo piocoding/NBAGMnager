@@ -206,7 +206,7 @@ public class TeamManager {
                 ResultSet rs = pstmt.executeQuery()) {
             String teamstr = "";
             while (rs.next()) {
-                teamstr += rs.getString("Name") + " [" + rs.getString("Position") + "] " + rs.getDouble("Salary") + "MYR \n";
+                teamstr += rs.getString("Name") + "   [" + rs.getString("Position") + "]   " + rs.getDouble("Salary") + "MYR \n";
             }
             return teamstr;
         } catch (SQLException e) {
