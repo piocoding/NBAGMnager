@@ -29,22 +29,14 @@ public class Journey {
     private ArrayList<String> pathName = new ArrayList<>();
     private boolean[] visited = new boolean[distance.length];
     private int totalDistance;
-    private int current;
-    
-    public static void main(String[] args){
-        Journey journey = new Journey();
-        journey.findShortestPath();
-        System.out.println(journey.printPath());
-        System.out.println(journey.printTotalDistance());
-    }
-    
+    private int current;   
 
     public Journey() {    
         cities = new String[]{"Spurs", "Warriors", "Celtics", "Heat", "Lakers", "Suns", "Magic", "Nuggets", "Thunder", "Rockets"};
         totalDistance = 0;
         current = 0;   
     }
-    
+        
     public void findShortestPath(){
         visited[current] = true;
         pathIndex.add(current);
@@ -57,18 +49,7 @@ public class Journey {
             current=next;
         }
     }
-    
-    public String printPath(){
-        for(int i=0;i<pathIndex.size();i++)
-            pathName.add(cities[pathIndex.get(i)]);
-        
-        return pathName.toString();
-    }
-    
-    public int printTotalDistance(){
-        return totalDistance;
-    }
-    
+  
     private int findNearestNeighbour(){
         int nearest = -1;
         int minDistance = Integer.MAX_VALUE;
@@ -83,5 +64,22 @@ public class Journey {
         return nearest;
     }
     
+    public String printPath(){
+        for(int i=0;i<pathIndex.size();i++)
+            pathName.add(cities[pathIndex.get(i)]);
+        
+        return pathName.toString();
+    }
+    
+    public int printTotalDistance(){
+        return totalDistance;
+    }
+    
+    public String printReasoning(){
+        return "This travel plan is the best because\n"
+                + "1. minimized physical and mental fatigue due to traveling\n" 
+                + "2. reduced travel stress from continuous long-distance travel\n"
+                + "3. less travel times, more preparation time";
+    } 
 }
 
