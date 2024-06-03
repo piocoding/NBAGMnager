@@ -17,13 +17,15 @@ public class JFrame extends javax.swing.JFrame {
      * Creates new form JFrame
      */
     TeamManager team = new TeamManager();
+    Journey sched = new Journey();
     CardLayout cardLayout;
     public JFrame() {
         initComponents();
         
         cardLayout = (CardLayout) (PanelCards.getLayout());
         teamArea.setText(team.getTeam());
-        
+        scheduleArea.setText(sched.getSchedule() + sched.getTotalDistance());
+        reasoningArea.setText(sched.getReasoning());
     }
 
     /**
@@ -85,6 +87,8 @@ public class JFrame extends javax.swing.JFrame {
         mapButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         scheduleArea = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
+        reasoningArea = new javax.swing.JTextArea();
         MoreCard = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         clearedToPlayButton = new javax.swing.JButton();
@@ -528,8 +532,20 @@ public class JFrame extends javax.swing.JFrame {
 
         scheduleArea.setEditable(false);
         scheduleArea.setColumns(20);
+        scheduleArea.setFont(new java.awt.Font("Krungthep", 1, 20)); // NOI18N
         scheduleArea.setRows(5);
         jScrollPane1.setViewportView(scheduleArea);
+
+        jLabel8.setFont(new java.awt.Font("Krungthep", 2, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(200, 200, 200));
+        jLabel8.setText("Method Used:     Nearest Neighbour Algorithm");
+
+        reasoningArea.setEditable(false);
+        reasoningArea.setBackground(new java.awt.Color(102, 0, 102));
+        reasoningArea.setColumns(20);
+        reasoningArea.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        reasoningArea.setForeground(new java.awt.Color(200, 200, 200));
+        reasoningArea.setRows(5);
 
         javax.swing.GroupLayout ScheduleCardLayout = new javax.swing.GroupLayout(ScheduleCard);
         ScheduleCard.setLayout(ScheduleCardLayout);
@@ -537,10 +553,12 @@ public class JFrame extends javax.swing.JFrame {
             ScheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ScheduleCardLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(ScheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ScheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(mapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reasoningArea))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         ScheduleCardLayout.setVerticalGroup(
             ScheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,8 +566,12 @@ public class JFrame extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(mapButton)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reasoningArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         PanelCards.add(ScheduleCard, "ScheduleCard");
@@ -835,6 +857,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -855,6 +878,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> positionOptionBox;
     private javax.swing.JButton rankingButton;
+    private javax.swing.JTextArea reasoningArea;
     private javax.swing.JButton removeButton;
     private javax.swing.JTextArea scheduleArea;
     private javax.swing.JButton searchButton;

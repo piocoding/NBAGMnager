@@ -78,7 +78,7 @@ public class Journey {
     
     public String getTotalDistance(){
         StringBuilder distanceString = new StringBuilder();
-        distanceString.append("Total distance traveled: ").append(totalDistance).append(" KM");
+        distanceString.append("\nTotal distance traveled: ").append(totalDistance).append(" KM");
         return distanceString.toString();
     }
     
