@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -70,6 +71,16 @@ public class PlayerStats {
     
     public static void csvToDatabase(){
         try{
+            String sqlCount = "SELECT COUNT(*) FROM APP.STATISTICS";
+            PreparedStatement countStmt = connection.prepareStatement(sqlCount);
+            ResultSet rs = countStmt.executeQuery();
+            int rowCount = 0;
+            if(rs.next())
+                rowCount = rs.getInt(1);
+            
+            if(rowCount == 572)
+                return;
+            
             BufferedReader reader = new BufferedReader(new FileReader(csvFile));
             
             String line;
