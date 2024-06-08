@@ -18,8 +18,10 @@ public class StatsWindow extends javax.swing.JFrame {
     /**
      * Creates new form StatsWindow
      */
+    //constructs Stats window with the playerName parameter from the data from database
     public StatsWindow(String playerName) {
         initComponents();
+        
         try (Connection connection = DriverManager.getConnection(playerdb)){
             
             Player player = PlayersDerby.getPlayerByName(connection, playerName);

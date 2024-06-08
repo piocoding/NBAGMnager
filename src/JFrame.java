@@ -16,15 +16,20 @@ public class JFrame extends javax.swing.JFrame {
     /**
      * Creates new form JFrame
      */
+    
+    // initialise necessary objects for a team
     TeamManager team = new TeamManager();
     ContractExtensionQueue queue = new ContractExtensionQueue();
     InjuryReserveManagement stack = new InjuryReserveManagement();
     Journey sched = new Journey();
     CardLayout cardLayout;
+    
     public JFrame() {
         initComponents();
         
         cardLayout = (CardLayout) (PanelCards.getLayout());
+        
+        // set texts for all the displays
         teamArea.setText(team.getTeam());
         scheduleArea.setText(sched.getSchedule() + sched.getTotalDistance());
         reasoningArea.setText(sched.getReasoning());
@@ -737,6 +742,7 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void mapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapButtonActionPerformed
+        // construct JFrame to show map picture window
         new MapWindow().setVisible(true);
     }//GEN-LAST:event_mapButtonActionPerformed
 
@@ -761,29 +767,38 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RosterPlayerNameFieldActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // pop-up window
         JOptionPane.showMessageDialog(null, team.removePlayer(RosterPlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
+        // update text fields
         teamArea.setText(team.getTeam());
         contractArea.setText(queue.getQueue());
         injuryArea.setText(stack.getStack());
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
+        // construct JFrame for the Stats window
         if(RosterPlayerNameField.getText()!=null)
             new StatsWindow(RosterPlayerNameField.getText()).setVisible(true);
     }//GEN-LAST:event_statsButtonActionPerformed
 
     private void clearedToPlayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearedToPlayButtonActionPerformed
+        // pop-up window
         JOptionPane.showMessageDialog(null, stack.clearedToPlay(), "Action", JOptionPane.INFORMATION_MESSAGE);
+        // update text field
         injuryArea.setText(stack.getStack());
     }//GEN-LAST:event_clearedToPlayButtonActionPerformed
 
     private void expiringButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expiringButtonActionPerformed
+        // pop-up window
         JOptionPane.showMessageDialog(null, queue.queuePlayer(morePlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
+        // update text field
         contractArea.setText(queue.getQueue());
     }//GEN-LAST:event_expiringButtonActionPerformed
 
     private void injuredButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_injuredButtonActionPerformed
+        // pop-up window
         JOptionPane.showMessageDialog(null, stack.stackPlayer(morePlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
+        // update text field
         injuryArea.setText(stack.getStack());
     }//GEN-LAST:event_injuredButtonActionPerformed
 
@@ -792,17 +807,21 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_morePlayerNameFieldActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // pop-up window
         JOptionPane.showMessageDialog(null, team.addPlayerFromSourceDB(RosterPlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
+        // update text field
         teamArea.setText(team.getTeam());
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void rankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingButtonActionPerformed
+        // construct JFrame for the Performance Ranking
         new RankingWindow().setVisible(true);
     }//GEN-LAST:event_rankingButtonActionPerformed
 
     private void extendedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extendedButtonActionPerformed
+        // pop-up window
         JOptionPane.showMessageDialog(null, queue.extend(), "Action", JOptionPane.INFORMATION_MESSAGE);
-        //System.out.println(queue.extend());
+        // update text field
         contractArea.setText(queue.getQueue());
     }//GEN-LAST:event_extendedButtonActionPerformed
 
