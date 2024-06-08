@@ -24,7 +24,7 @@ public class InjuryReserveManagement {
         createStackTable();
     }
 
-    // create team table
+    // create stack table
     private void createStackTable() {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -75,17 +75,18 @@ public class InjuryReserveManagement {
         return false;
     }
 
+    // method that checks if player should be added to stack before adding to table
     public String stackPlayer(String playerName) {
         try ( Connection sourceConn = PlayersDerby.getConnection()) {
             Player player = PlayersDerby.getPlayerByName(sourceConn, playerName);
             
+            // Don't add to stack if player doesn't exist/ is not in the team/ already in the stack.
             if (player == null) {
                 return "Player not found in team.";
             }
             if (!isPlayerInTeam(player.getName())) {
                 return "Player not found in team.";
             }
-
             if (isPlayerInStack(player.getName())) {
                 return "Player already in the reserve.";
             }
@@ -97,6 +98,7 @@ public class InjuryReserveManagement {
         }
     }
 
+    // actual method that adds player to stack
     private String addPlayerToStack(Player player) {
 
         String sql = "INSERT INTO stack (name) VALUES (?)";
@@ -111,6 +113,7 @@ public class InjuryReserveManagement {
         }
     }
 
+    // removes player that was last added to the stack
     public String clearedToPlay() {
         String playerName = getTopInStack();
         String sql = "DELETE FROM stack WHERE name = ?";
@@ -143,6 +146,7 @@ public class InjuryReserveManagement {
         }
     }
 
+    // get String of the whole stack
     public String getStack() {
         try ( Connection conn = DriverManager.getConnection(nbadb);  
                 PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM stack");  
