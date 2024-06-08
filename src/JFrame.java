@@ -17,6 +17,8 @@ public class JFrame extends javax.swing.JFrame {
      * Creates new form JFrame
      */
     TeamManager team = new TeamManager();
+    ContractExtensionQueue queue = new ContractExtensionQueue();
+    InjuryReserveManagement stack = new InjuryReserveManagement();
     Journey sched = new Journey();
     CardLayout cardLayout;
     public JFrame() {
@@ -26,6 +28,8 @@ public class JFrame extends javax.swing.JFrame {
         teamArea.setText(team.getTeam());
         scheduleArea.setText(sched.getSchedule() + sched.getTotalDistance());
         reasoningArea.setText(sched.getReasoning());
+        contractArea.setText(queue.getQueue());
+        injuryArea.setText(stack.getStack());
     }
 
     /**
@@ -592,11 +596,13 @@ public class JFrame extends javax.swing.JFrame {
 
         injuryArea.setEditable(false);
         injuryArea.setColumns(20);
+        injuryArea.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         injuryArea.setRows(5);
         jScrollPane4.setViewportView(injuryArea);
 
         contractArea.setEditable(false);
         contractArea.setColumns(20);
+        contractArea.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         contractArea.setRows(5);
         jScrollPane5.setViewportView(contractArea);
 
@@ -606,6 +612,11 @@ public class JFrame extends javax.swing.JFrame {
 
         extendedButton.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
         extendedButton.setText("Extended");
+        extendedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                extendedButtonActionPerformed(evt);
+            }
+        });
 
         expiringButton.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
         expiringButton.setText("Expiring Contract");
@@ -752,6 +763,8 @@ public class JFrame extends javax.swing.JFrame {
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         JOptionPane.showMessageDialog(null, team.removePlayer(RosterPlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
         teamArea.setText(team.getTeam());
+        contractArea.setText(queue.getQueue());
+        injuryArea.setText(stack.getStack());
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
@@ -760,15 +773,18 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_statsButtonActionPerformed
 
     private void clearedToPlayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearedToPlayButtonActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, stack.clearedToPlay(), "Action", JOptionPane.INFORMATION_MESSAGE);
+        injuryArea.setText(stack.getStack());
     }//GEN-LAST:event_clearedToPlayButtonActionPerformed
 
     private void expiringButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expiringButtonActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, queue.queuePlayer(morePlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
+        contractArea.setText(queue.getQueue());
     }//GEN-LAST:event_expiringButtonActionPerformed
 
     private void injuredButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_injuredButtonActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, stack.stackPlayer(morePlayerNameField.getText()), "Action", JOptionPane.INFORMATION_MESSAGE);
+        injuryArea.setText(stack.getStack());
     }//GEN-LAST:event_injuredButtonActionPerformed
 
     private void morePlayerNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_morePlayerNameFieldActionPerformed
@@ -783,6 +799,12 @@ public class JFrame extends javax.swing.JFrame {
     private void rankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingButtonActionPerformed
         new RankingWindow().setVisible(true);
     }//GEN-LAST:event_rankingButtonActionPerformed
+
+    private void extendedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extendedButtonActionPerformed
+        JOptionPane.showMessageDialog(null, queue.extend(), "Action", JOptionPane.INFORMATION_MESSAGE);
+        //System.out.println(queue.extend());
+        contractArea.setText(queue.getQueue());
+    }//GEN-LAST:event_extendedButtonActionPerformed
 
     /**
      * @param args the command line arguments
