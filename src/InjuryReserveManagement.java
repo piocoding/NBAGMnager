@@ -17,7 +17,7 @@ import java.util.Stack;
 
 public class InjuryReserveManagement {
     
-    private static final String nbadb = "jdbc:derby://localhost:1527/NBAdb;create=true"; // teamdb URL
+    private static final String nbadb = "jdbc:derby://localhost:1527/NBAdb;create=true";
     private static Connection conn = null;
 
     public InjuryReserveManagement() {
