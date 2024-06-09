@@ -40,6 +40,7 @@ public class Player {
             return "Centers";
     }
 
+    // Setting player's salary based on average points
     public String getSalary() {
         if (points >= 35)
             return "5000";
