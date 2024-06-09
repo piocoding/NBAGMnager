@@ -18,7 +18,7 @@ import java.util.Queue;
 
 public class ContractExtensionQueue {
 
-    private static final String nbadb = "jdbc:derby://localhost:1527/NBAdb;create=true"; // teamdb URL
+    private static final String nbadb = "jdbc:derby://localhost:1527/NBAdb;create=true";
     private static Connection conn = null;
 
     public ContractExtensionQueue() {
@@ -46,7 +46,8 @@ public class ContractExtensionQueue {
 
     private boolean isPlayerInTeam(String name) {
         String sql = "SELECT COUNT(*) FROM team WHERE name = ?";
-        try ( Connection conn = DriverManager.getConnection(nbadb);  PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try ( Connection conn = DriverManager.getConnection(nbadb);  
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             try ( ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -61,7 +62,8 @@ public class ContractExtensionQueue {
 
     private boolean isPlayerInQueue(String name) {
         String sql = "SELECT COUNT(*) FROM queue WHERE name = ?";
-        try ( Connection conn = DriverManager.getConnection(nbadb);  PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try ( Connection conn = DriverManager.getConnection(nbadb);  
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             try ( ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
