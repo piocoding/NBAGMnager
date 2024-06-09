@@ -10,8 +10,8 @@ public class SearchPlayer {
     public static String search(String playerName, String position, String minAge, String maxAge, String points, String rebounds, String assists, String steals, String blocks){
         // StringBuilder to dynamically construct the SQL query
         StringBuilder query = new StringBuilder("SELECT * FROM statistics WHERE 1=1");
-        // "WHERE 1=1" is a common trick to simplify appending further conditions
-
+        // select all columns from a table named statistics where the condition 1=1 is always true
+        
         // Constructing SQL query based on provided criteria
         // If the playerName parameter is not empty
         // it appends a condition to match player names containing the provided string using the SQL LIKE operator
@@ -29,32 +29,24 @@ public class SearchPlayer {
             query.append(" AND age >= ").append(minAge);
         }
         // If the maxAge parameter is not empty
-        // it appends a condition to match players with age less than or equal to the specified maximum age
         if (!maxAge.isEmpty()) {
             query.append(" AND age <= ").append(maxAge);
         }
-        // If the points parameter is not empty
-        // it appends a condition to match players with points greater than or equal to the specified value
+        if (!salary.isEmpty()) {
+            query.append(" AND salary <= ").append(Double.parseDouble(salary));
+        }
         if (!points.isEmpty()) {
             query.append(" AND points >= ").append(Double.parseDouble(points));
         }
-        // If the rebounds parameter is not empty
-        // it appends a condition to match players with rebounds greater than or equal to the specified value
         if (!rebounds.isEmpty()) {
             query.append(" AND rebounds >= ").append(Double.parseDouble(rebounds));
         }
-        // If the assists parameter is not empty
-        // it appends a condition to match players with assists greater than or equal to the specified value
         if (!assists.isEmpty()) {
             query.append(" AND assists >= ").append(Double.parseDouble(assists));
         }
-        // If the steals parameter is not empty
-        // it appends a condition to match players with steals greater than or equal to the specified value
         if (!steals.isEmpty()) {
             query.append(" AND steals >= ").append(Double.parseDouble(steals));
         }
-        // If the blocks parameter is not empty
-        // it appends a condition to match players with blocks greater than or equal to the specified value
         if (!blocks.isEmpty()) {
             query.append(" AND blocks >= ").append(Double.parseDouble(blocks));
         }
@@ -63,9 +55,8 @@ public class SearchPlayer {
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/NBAdb");
              Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(query.toString())) {
-            // Connection to database "NBAdb" on localhost, create statement and execute query
 
-            StringBuilder sb = new StringBuilder(); // StringBuilder to accumulate the result string
+            StringBuilder sb = new StringBuilder();
             int count = 0; // Counter for the number of players found
 
             // Processing ResultSet to build player statistics
@@ -83,14 +74,14 @@ public class SearchPlayer {
 
             // Printing results or a message if no players found
             if (count == 0) {
-                return "No players found with the given criteria."; // If no players found
+                return "No players found with the given criteria.";
             } else {
-                return sb.toString(); // Return the accumulated result string
+                return sb.toString();
             }
         } catch (Exception e) {
             // Handling any exceptions that occur during database access or query execution
             e.printStackTrace();
         }
-        return "Error getting players."; // Return error message if exception occurs
+        return "Error getting players.";
     }
 }
