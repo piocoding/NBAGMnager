@@ -23,7 +23,7 @@ public class TeamManager {
         createTeamTable();
     }
 
-    // create team table
+    // Create team table
     private void createTeamTable() {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -51,6 +51,7 @@ public class TeamManager {
         }
     }
 
+    // Check player's status before adding
     public String addPlayerFromSourceDB(String playerName) {
         try (Connection sourceConn = PlayersDerby.getConnection()) {
             Player player = PlayersDerby.getPlayerByName(sourceConn, playerName);
@@ -69,6 +70,7 @@ public class TeamManager {
         }
     }
 
+    // Checking if player already in team to avoid duplicate players
     private boolean isPlayerInTeam(String name) {
         String sql = "SELECT COUNT(*) FROM team WHERE name = ?";
         try (Connection conn = DriverManager.getConnection(nbadb);
@@ -85,6 +87,7 @@ public class TeamManager {
         return false;
     }
 
+    // Add player into team
     private String addPlayerToTeamDB(Player player) {
         String returnstr = "";
         
@@ -95,6 +98,7 @@ public class TeamManager {
         double assists = player.getAssists();
         double blocks = player.getBlocks();
 
+        // Set composite score
         double compositeScore = player.getCompositeScore();        
         
         String sql = "INSERT INTO team (name, age, position, salary, points, rebounds, assists, steals, blocks, composite_score) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -119,6 +123,7 @@ public class TeamManager {
         }
     }
 
+    // Remove player from team
     public String removePlayer(String playerName) {
         String returnstr = "";
         if (!isPlayerInTeam(playerName)) {
