@@ -21,6 +21,7 @@ public class PlayerPerformanceRanking {
 
     public double calcCompositeScore() {
 
+        // Converting each stats to percentage
         double actualpoints = 100 / 34;
         double actualrebounds = 100 / 15;
         double actualsteals = 100 / 3;
@@ -33,6 +34,7 @@ public class PlayerPerformanceRanking {
         double assists = player.getAssists();
         double blocks = player.getBlocks();
 
+        // Calculate composite score depending on player's position
         switch (player.getPosition()) {
             case "Forwards":
                 return (0.2 * points * actualpoints)       +
