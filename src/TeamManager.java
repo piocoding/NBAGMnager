@@ -149,7 +149,6 @@ public class TeamManager {
     }
     
     public void removePlayerFromStackAndQueue(String playerName) {
-        
         String sql = "DELETE FROM stack WHERE name = ?";
         try (Connection conn = DriverManager.getConnection(nbadb);
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -157,7 +156,6 @@ public class TeamManager {
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Player removed successfully from stack.");
-                
             } else {
                 System.out.println("Error removing player from stack.");
             }
@@ -181,9 +179,9 @@ public class TeamManager {
             e.printStackTrace();
             System.out.println("Error removing player from queue.");
         }
-        
     }
 
+    // Check team following NBA Composition Rules
     private String checkTeam() {
         StringBuilder result = new StringBuilder();
         int playerCount = 0;
